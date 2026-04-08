@@ -53,6 +53,38 @@ h1 { font-size: clamp(1.75rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; l
 .tab-btn:hover { color: var(--text); }
 .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
 
+/* BURGER MENU — hidden on desktop */
+.burger-menu { display: none; margin-bottom: 2rem; position: relative; }
+.burger-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 0.85rem 1.1rem;
+  background: var(--bg-card); border: 1px solid var(--rule);
+  border-radius: var(--radius); cursor: pointer;
+  font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700;
+  color: var(--teal); letter-spacing: -0.02em;
+  transition: background 0.2s;
+}
+.burger-btn:hover { background: var(--bg-lift); }
+.burger-btn svg { flex-shrink: 0; transition: transform 0.25s; }
+.burger-btn.open svg { transform: rotate(45deg); }
+.burger-dropdown {
+  display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+  background: var(--bg-card); border: 1px solid var(--rule);
+  border-radius: var(--radius); overflow: hidden; z-index: 100;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+.burger-dropdown.open { display: block; }
+.burger-item {
+  display: block; width: 100%; padding: 0.85rem 1.1rem;
+  background: none; border: none; border-bottom: 1px solid var(--rule-soft);
+  font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600;
+  color: var(--text-muted); text-align: left; cursor: pointer;
+  transition: background 0.15s, color 0.15s; letter-spacing: -0.02em;
+}
+.burger-item:last-child { border-bottom: none; }
+.burger-item:hover { background: var(--bg-lift); color: var(--text); }
+.burger-item.active { color: var(--teal); background: var(--teal-dim); }
+
 /* PANELS */
 .panel { display: none; }
 .panel.active { display: block; animation: fadeUp 0.4s ease forwards; opacity: 0; }
@@ -126,35 +158,17 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
 /* ── MOBILE ── */
 @media (max-width: 640px) {
   .page { padding: 0 1rem 4rem; }
-
-  /* header stacks vertically */
   .header-inner { grid-template-columns: 1fr; gap: 1.25rem; }
   .header-links { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 0.75rem; }
-
-  /* profile pic smaller on mobile */
-  .header-inner img[src="photo-main.jpg"] { width: 72px !important; height: 72px !important; }
-
-  /* tabs scroll horizontally */
-  .tabs { margin-bottom: 2rem; }
-  .tab-btn { padding: 0.75rem 1rem; font-size: 13px; }
-
-  /* cards single column */
+  .header-inner img { width: 72px !important; height: 72px !important; }
+  .tabs { display: none; }
+  .burger-menu { display: block; }
   .projects { grid-template-columns: 1fr; }
-
-  /* about grid single column */
   .about-grid { grid-template-columns: 1fr; }
-
-  /* photo strip 2 cols on mobile (3 is too small) */
   .photo-strip { grid-template-columns: 1fr 1fr !important; }
   .photo-strip img:last-child { display: none; }
-
-  /* tools grid single column */
   .tools-grid { grid-template-columns: 1fr 1fr; }
-
-  /* track header compress */
   .track-count { display: none; }
-
-  /* footer stack */
   footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 }
 
@@ -187,11 +201,29 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   </div>
 </header>
 
+<!-- DESKTOP TABS -->
 <div class="tabs">
   <button class="tab-btn active" onclick="switchTab('uxr', this)">UX & behavioral research</button>
   <button class="tab-btn" onclick="switchTab('comms', this)">Strategic communications</button>
   <button class="tab-btn" onclick="switchTab('about', this)">About</button>
   <button class="tab-btn" onclick="switchTab('tools', this)">Tools</button>
+</div>
+
+<!-- MOBILE BURGER MENU -->
+<div class="burger-menu" id="burgerMenu">
+  <button class="burger-btn" id="burgerBtn" onclick="toggleBurger()">
+    <span id="burgerLabel">UX & behavioral research</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="3" y1="8" x2="13" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="8" y1="3" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <div class="burger-dropdown" id="burgerDropdown">
+    <button class="burger-item active" onclick="burgerSwitch('uxr', 'UX & behavioral research', this)">UX & behavioral research</button>
+    <button class="burger-item" onclick="burgerSwitch('comms', 'Strategic communications', this)">Strategic communications</button>
+    <button class="burger-item" onclick="burgerSwitch('about', 'About', this)">About</button>
+    <button class="burger-item" onclick="burgerSwitch('tools', 'Tools', this)">Tools</button>
+  </div>
 </div>
 
 <!-- UXR PANEL -->
@@ -468,6 +500,32 @@ function switchTab(tab, btn) {
   document.getElementById('panel-' + tab).classList.add('active');
   btn.classList.add('active');
 }
+
+function toggleBurger() {
+  const btn = document.getElementById('burgerBtn');
+  const dropdown = document.getElementById('burgerDropdown');
+  btn.classList.toggle('open');
+  dropdown.classList.toggle('open');
+}
+
+function burgerSwitch(tab, label, item) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.burger-item').forEach(i => i.classList.remove('active'));
+  item.classList.add('active');
+  document.getElementById('burgerLabel').textContent = label;
+  document.getElementById('burgerBtn').classList.remove('open');
+  document.getElementById('burgerDropdown').classList.remove('open');
+}
+
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('burgerMenu');
+  if (menu && !menu.contains(e.target)) {
+    document.getElementById('burgerBtn').classList.remove('open');
+    document.getElementById('burgerDropdown').classList.remove('open');
+  }
+});
 </script>
 </body>
 </html>
