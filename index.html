@@ -175,6 +175,25 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   .tools-grid { grid-template-columns: 1fr; }
   h1 { letter-spacing: -0.04em; }
 }
+/* ── MOBILE CAROUSEL ── */
+.carousel-dots, .carousel-nav, .carousel-hint { display: none; }
+
+@media (max-width: 640px) {
+  .projects { display: block; position: relative; overflow: hidden; touch-action: pan-y; }
+  .projects .card { display: none; }
+  .projects .card.carousel-active { display: block; }
+  .carousel-wrap { position: relative; }
+  .carousel-dots { display: flex; justify-content: center; gap: 7px; margin-top: 1rem; }
+  .carousel-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(242,242,242,0.2); border: none; padding: 0; cursor: pointer; transition: background 0.2s, transform 0.2s; }
+  .carousel-dot.active { background: var(--teal); transform: scale(1.2); }
+  .carousel-hint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 11px; color: var(--text-muted); font-weight: 500; margin-top: 0.6rem; opacity: 1; transition: opacity 0.5s; }
+  .carousel-hint.hidden { opacity: 0; }
+  .carousel-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 0.85rem; }
+  .carousel-btn { background: var(--bg-card); border: 1px solid var(--rule); border-radius: var(--radius-pill); color: var(--text-mid); font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; padding: 6px 16px; cursor: pointer; transition: background 0.2s, color 0.2s; letter-spacing: -0.01em; }
+  .carousel-btn:disabled { opacity: 0.25; cursor: default; }
+  .carousel-btn:not(:disabled):hover { background: var(--bg-lift); color: var(--text); }
+  .carousel-counter { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+}
 </style>
 </head>
 <body>
@@ -502,18 +521,18 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
 
 </div>
 <script>
+<script>
 function switchTab(tab, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('panel-' + tab).classList.add('active');
   btn.classList.add('active');
+  setTimeout(initCarousels, 50);
 }
 
 function toggleBurger() {
-  const btn = document.getElementById('burgerBtn');
-  const dropdown = document.getElementById('burgerDropdown');
-  btn.classList.toggle('open');
-  dropdown.classList.toggle('open');
+  document.getElementById('burgerBtn').classList.toggle('open');
+  document.getElementById('burgerDropdown').classList.toggle('open');
 }
 
 function burgerSwitch(tab, label, item) {
@@ -525,6 +544,7 @@ function burgerSwitch(tab, label, item) {
   document.getElementById('burgerLabel').textContent = label;
   document.getElementById('burgerBtn').classList.remove('open');
   document.getElementById('burgerDropdown').classList.remove('open');
+  setTimeout(initCarousels, 50);
 }
 
 document.addEventListener('click', function(e) {
@@ -534,6 +554,82 @@ document.addEventListener('click', function(e) {
     document.getElementById('burgerDropdown').classList.remove('open');
   }
 });
+
+function initCarousels() {
+  if (window.innerWidth > 640) return;
+  document.querySelectorAll('.projects').forEach(function(proj) {
+    if (proj.dataset.carouselInit) return;
+    proj.dataset.carouselInit = 'true';
+
+    const cards = Array.from(proj.querySelectorAll('.card'));
+    if (cards.length < 2) return;
+
+    let current = 0, startX = 0, hintShown = false;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'carousel-wrap';
+    proj.parentNode.insertBefore(wrap, proj);
+    wrap.appendChild(proj);
+
+    cards[0].classList.add('carousel-active');
+
+    const dotsEl = document.createElement('div');
+    dotsEl.className = 'carousel-dots';
+    cards.forEach(function(_, i) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', function() { goTo(i); });
+      dotsEl.appendChild(dot);
+    });
+    wrap.appendChild(dotsEl);
+
+    const nav = document.createElement('div');
+    nav.className = 'carousel-nav';
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'carousel-btn';
+    prevBtn.textContent = '← prev';
+    prevBtn.disabled = true;
+    prevBtn.addEventListener('click', function() { goTo(current - 1); });
+    const counter = document.createElement('span');
+    counter.className = 'carousel-counter';
+    counter.textContent = '1 / ' + cards.length;
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'carousel-btn';
+    nextBtn.textContent = 'next →';
+    nextBtn.addEventListener('click', function() { goTo(current + 1); });
+    nav.appendChild(prevBtn);
+    nav.appendChild(counter);
+    nav.appendChild(nextBtn);
+    wrap.appendChild(nav);
+
+    const hint = document.createElement('div');
+    hint.className = 'carousel-hint';
+    hint.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> swipe to explore';
+    wrap.appendChild(hint);
+    setTimeout(function() { hint.classList.add('hidden'); hintShown = true; }, 3000);
+
+    function goTo(n) {
+      if (n < 0 || n >= cards.length) return;
+      cards[current].classList.remove('carousel-active');
+      dotsEl.querySelectorAll('.carousel-dot')[current].classList.remove('active');
+      current = n;
+      cards[current].classList.add('carousel-active');
+      dotsEl.querySelectorAll('.carousel-dot')[current].classList.add('active');
+      counter.textContent = (current + 1) + ' / ' + cards.length;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === cards.length - 1;
+      if (!hintShown) { hint.classList.add('hidden'); hintShown = true; }
+    }
+
+    proj.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+    proj.addEventListener('touchend', function(e) {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
+    }, { passive: true });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initCarousels);
 </script>
 </body>
 </html>
