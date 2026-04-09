@@ -34,36 +34,72 @@ p, li, .card-text, .about-text, .footnote-text, .subtitle, .cred-sub {
   line-height: 1.65;
   letter-spacing: -0.01em;
 }
-.page { max-width: 940px; margin: 0 auto; padding: 0 2rem 6rem; }
+.page { max-width: 940px; margin: 0 auto; padding: 0 1.25rem 6rem; }
 
-header { padding: 4.5rem 0 2.5rem; border-bottom: 1px solid var(--rule); margin-bottom: 0; }
+/* HEADER */
+header { padding: 3rem 0 2rem; border-bottom: 1px solid var(--rule); margin-bottom: 0; }
 .header-inner { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; }
 .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: -0.02em; color: var(--text-muted); margin-bottom: 0.75rem; opacity: 0; animation: fadeUp 0.5s ease forwards 0.1s; }
-h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.06em; color: var(--text); opacity: 0; animation: fadeUp 0.5s ease forwards 0.2s; }
+h1 { font-size: clamp(1.75rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.06em; color: var(--text); opacity: 0; animation: fadeUp 0.5s ease forwards 0.2s; }
 .subtitle { font-size: 13px; color: var(--text-mid); font-weight: 300; margin-top: 0.85rem; max-width: 480px; opacity: 0; animation: fadeUp 0.5s ease forwards 0.3s; }
 .header-links { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; opacity: 0; animation: fadeUp 0.5s ease forwards 0.4s; }
 .header-links a { font-size: 12px; color: var(--text-mid); text-decoration: none; font-weight: 500; transition: color 0.2s; }
 .header-links a:hover { color: var(--teal); }
 
-.tabs { display: flex; border-bottom: 1px solid var(--rule); margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.5s ease forwards 0.5s; }
-.tab-btn { padding: 1rem 1.5rem; font-size: 15px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-muted); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.2s; margin-bottom: -1px; font-family: 'Montserrat', sans-serif; }
+/* TABS */
+.tabs { display: flex; border-bottom: 1px solid var(--rule); margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.5s ease forwards 0.5s; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn { padding: 1rem 1.25rem; font-size: 14px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-muted); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.2s; margin-bottom: -1px; font-family: 'Montserrat', sans-serif; white-space: nowrap; flex-shrink: 0; }
 .tab-btn:hover { color: var(--text); }
 .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
 
+/* BURGER MENU — hidden on desktop */
+.burger-menu { display: none; margin-bottom: 2rem; position: relative; }
+.burger-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 0.85rem 1.1rem;
+  background: var(--bg-card); border: 1px solid var(--rule);
+  border-radius: var(--radius); cursor: pointer;
+  font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700;
+  color: var(--teal); letter-spacing: -0.02em;
+  transition: background 0.2s;
+}
+.burger-btn:hover { background: var(--bg-lift); }
+.burger-btn svg { flex-shrink: 0; transition: transform 0.25s; }
+.burger-dropdown {
+  display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+  background: var(--bg-card); border: 1px solid var(--rule);
+  border-radius: var(--radius); overflow: hidden; z-index: 100;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+.burger-dropdown.open { display: block; }
+.burger-item {
+  display: block; width: 100%; padding: 0.85rem 1.1rem;
+  background: none; border: none; border-bottom: 1px solid var(--rule-soft);
+  font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600;
+  color: var(--text-muted); text-align: left; cursor: pointer;
+  transition: background 0.15s, color 0.15s; letter-spacing: -0.02em;
+}
+.burger-item:last-child { border-bottom: none; }
+.burger-item:hover { background: var(--bg-lift); color: var(--text); }
+.burger-item.active { color: var(--teal); background: var(--teal-dim); }
+
+/* PANELS */
 .panel { display: none; }
 .panel.active { display: block; animation: fadeUp 0.4s ease forwards; opacity: 0; }
 
+/* SECTION HEADER */
 .track-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
 .track-title { font-size: 14px; font-weight: 600; letter-spacing: -0.02em; color: var(--text-mid); white-space: nowrap; }
 .track-rule { flex: 1; height: 1px; background: var(--rule); }
 .track-count { font-size: 13px; color: var(--text); font-weight: 700; white-space: nowrap; }
 
+/* GRID */
 .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-@media (max-width: 640px) { .projects { grid-template-columns: 1fr; } }
 
+/* CARDS */
 .card { background: var(--bg-card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.5rem; transition: background 0.2s ease, border-color 0.2s ease; }
 .card:hover { background: var(--bg-lift); border-color: rgba(242,242,242,0.22); }
-
 .card-number { font-size: 12px; font-weight: 600; color: var(--teal); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
 .card-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; line-height: 1.3; letter-spacing: -0.03em; }
 .card-org { font-size: 13px; color: var(--text-mid); font-weight: 400; margin-bottom: 1rem; }
@@ -71,13 +107,12 @@ h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.1; lett
 .card-row { margin-bottom: 0.65rem; }
 .card-label { font-size: 12px; font-weight: 700; color: var(--text); display: block; margin-bottom: 3px; letter-spacing: -0.01em; }
 .card-text { font-size: 13px; color: var(--text-mid); }
-
 .card-outcome { margin-top: 1rem; padding: 0.75rem; background: var(--teal-dim); border-left: 2px solid var(--teal); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 12px; color: var(--text-mid); }
 .card-outcome strong { color: var(--teal); font-weight: 700; display: block; font-size: 12px; margin-bottom: 4px; }
-
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
 .tag { font-size: 12px; padding: 4px 12px; border-radius: var(--radius-pill); background: rgba(242,242,242,0.1); border: 1px solid rgba(242,242,242,0.25); color: var(--text); font-weight: 400; cursor: default; }
 
+/* TOOLS */
 .tools-section { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
 .tools-section-first { margin-top: 0; padding-top: 0; border-top: none; }
 .tools-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 1.5rem; letter-spacing: -0.02em; }
@@ -86,13 +121,14 @@ h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.1; lett
 .tool-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.5rem; }
 .tool-pill { font-size: 12px; padding: 4px 12px; border-radius: var(--radius-pill); background: rgba(242,242,242,0.1); border: 1px solid rgba(242,242,242,0.25); color: var(--text); font-weight: 400; cursor: default; }
 
+/* FOOTNOTE */
 .footnote { margin-top: 2rem; padding: 1.25rem 1.5rem; border: 1px solid var(--rule); border-left: 3px solid var(--teal); background: var(--bg-card); border-radius: var(--radius); }
 .footnote-label { font-size: 12px; font-weight: 600; color: var(--teal); margin-bottom: 0.5rem; }
 .footnote-text { font-size: 13px; color: var(--text-mid); }
 .footnote-text strong { font-weight: 600; color: var(--text); }
 
+/* ABOUT */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
-@media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
 .about-block-title { font-size: 13px; font-weight: 600; color: var(--text-mid); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); letter-spacing: -0.02em; }
 .about-text { font-size: 13px; color: var(--text-mid); font-weight: 300; margin-bottom: 0.75rem; }
 .about-list { list-style: none; }
@@ -104,13 +140,12 @@ h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.1; lett
 .credential-row:last-child { border-bottom: none; }
 .cred-title { font-size: 13px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
 .cred-sub { font-size: 12px; color: var(--text-mid); font-weight: 300; margin-top: 2px; }
-
 .skill-grid { display: flex; flex-wrap: wrap; gap: 7px; }
 .skill-pill { font-size: 12px; padding: 4px 12px; border-radius: var(--radius-pill); background: rgba(242,242,242,0.1); border: 1px solid rgba(242,242,242,0.25); color: var(--text); font-weight: 400; cursor: default; }
-
 .a11y-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: var(--radius-pill); background: rgba(242,242,242,0.07); border: 1px solid var(--rule); font-size: 12px; color: var(--text-mid); font-weight: 400; margin-top: 0.75rem; line-height: 1.5; }
 .a11y-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
 
+/* FOOTER */
 footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; }
 .footer-name { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: -0.02em; }
 .footer-links { display: flex; gap: 1.5rem; }
@@ -118,6 +153,28 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
 .footer-links a:hover { color: var(--teal); }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  .page { padding: 0 1rem 4rem; }
+  .header-inner { grid-template-columns: 1fr; gap: 1.25rem; }
+  .header-links { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 0.75rem; }
+  .header-inner img { width: 72px !important; height: 72px !important; }
+  .tabs { display: none; }
+  .burger-menu { display: block; }
+  .projects { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+  .photo-strip { grid-template-columns: 1fr 1fr !important; }
+  .photo-strip img:last-child { display: none; }
+  .tools-grid { grid-template-columns: 1fr 1fr; }
+  .track-count { display: none; }
+  footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+}
+
+@media (max-width: 400px) {
+  .tools-grid { grid-template-columns: 1fr; }
+  h1 { letter-spacing: -0.04em; }
+}
 </style>
 </head>
 <body>
@@ -127,16 +184,15 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   <div class="header-inner">
     <div style="display:flex; align-items:center; gap:1.25rem;">
       <img src="photo-main.jpg" alt="Santina Piazzese Spratte"
-        style="width:96px; height:96px; border-radius:50%; object-fit:cover; border:2px solid var(--rule); flex-shrink:0; opacity:0; animation:fadeUp 0.5s ease forwards 0.1s;"
+        style="width:180px; height:180px; border-radius:50%; object-fit:cover; border:2px solid var(--rule); flex-shrink:0; opacity:0; animation:fadeUp 0.5s ease forwards 0.1s;"
         onerror="this.style.display='none'">
       <div>
-        <div class="eyebrow">portfolio</div>
         <h1>santina piazzese<br>spratte</h1>
-        <p class="subtitle">Sr. UX Researcher & Behavioral Insights, Strategic Communicator — 6+ years translating human insight into research, narrative, and strategy across UX research and communications.</p>
+        <p class="subtitle"><strong style="display:block; font-size:15px; color:var(--teal); font-weight:700; letter-spacing:-0.03em; margin-bottom:0.4rem;">Sr. UX Researcher - Behavioral Insights - Strategic Communicator</strong>6+ years translating human insight into research, narrative, and strategy across UX research and communications.</p>
       </div>
     </div>
     <div class="header-links">
-      <a href="/cdn-cgi/l/email-protection#a8d8dbc186dbc9c6dcc1c6c9e8cfc5c9c1c486cbc7c5"><span class="__cf_email__" data-cfemail="3444475d1a47555a405d5a55745359555d581a575b59">[email&#160;protected]</span></a>
+      <a href="mailto:psi.santina@gmail.com">psi.santina@gmail.com</a>
       <a href="https://www.linkedin.com/in/santina-piazzese-spratte/" target="_blank">LinkedIn</a>
       <a href="https://www.researchgate.net/profile/Santina-Piazzese-Spratte" target="_blank">ResearchGate</a>
       <a href="https://ssantina.substack.com" target="_blank">Substack</a>
@@ -144,11 +200,29 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   </div>
 </header>
 
+<!-- DESKTOP TABS -->
 <div class="tabs">
   <button class="tab-btn active" onclick="switchTab('uxr', this)">UX & behavioral research</button>
   <button class="tab-btn" onclick="switchTab('comms', this)">Strategic communications</button>
   <button class="tab-btn" onclick="switchTab('about', this)">About</button>
   <button class="tab-btn" onclick="switchTab('tools', this)">Tools</button>
+</div>
+
+<!-- MOBILE BURGER MENU -->
+<div class="burger-menu" id="burgerMenu">
+  <p style="font-size:12px; color:var(--text-mid); font-weight:600; letter-spacing:0.05em; text-transform:uppercase; margin-top:0.5rem; margin-bottom:0.5rem;">Explore my portfolio</p>
+  <button class="burger-btn" id="burgerBtn" onclick="toggleBurger()">
+    <span id="burgerLabel">UX & behavioral research</span>
+    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="burger-dropdown" id="burgerDropdown">
+    <button class="burger-item active" onclick="burgerSwitch('uxr', 'UX & behavioral research', this)">UX & behavioral research</button>
+    <button class="burger-item" onclick="burgerSwitch('comms', 'Strategic communications', this)">Strategic communications</button>
+    <button class="burger-item" onclick="burgerSwitch('about', 'About', this)">About</button>
+    <button class="burger-item" onclick="burgerSwitch('tools', 'Tools', this)">Tools</button>
+  </div>
 </div>
 
 <!-- UXR PANEL -->
@@ -286,17 +360,17 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
 
     <div>
       <div class="about-block-title">Who I am</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:1.25rem;">
+      <div class="photo-strip" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:1.25rem;">
         <img src="photo-1.jpg" alt="" style="width:100%; height:130px; object-fit:cover; border-radius:8px; border:1px solid var(--rule);" onerror="this.style.display='none'">
         <img src="photo-2.jpg" alt="" style="width:100%; height:130px; object-fit:cover; border-radius:8px; border:1px solid var(--rule);" onerror="this.style.display='none'">
         <img src="photo-3.jpg" alt="" style="width:100%; height:130px; object-fit:cover; border-radius:8px; border:1px solid var(--rule);" onerror="this.style.display='none'">
       </div>
       <p class="about-text">I'm a behavioral scientist and strategic communicator based in Amsterdam. My work sits at the intersection of understanding people and communicating in ways that actually reach them — whether that's a research study, a campaign strategy, or a piece of writing.</p>
-      <p class="about-text">I hold an MSc in Social Influence from the University of Amsterdam (2026), with a focus on persuasion, behavioral interventions, and evidence-based communication for systemic change. My first masters was in cognitive psychology, and I also hold a postgraduate specialization in cognitive psychotherapy.</p>
+      <p class="about-text">2nd MSc in Social Influence from the University of Amsterdam (2026), with a focus on persuasion, behavioral interventions, and evidence-based communication for systemic change. My first masters was in cognitive psychology.</p>
       <p class="about-text">I've spent six years doing UX and behavioral research across startups, scale-ups, and enterprise — and have been building toward strategic communications in sustainability and social impact.</p>
       <div class="a11y-badge">
         <span class="a11y-dot"></span>
-        Open to roles in both tracks, particularly where behavioral science and storytelling meet. Based in Amsterdam
+        Open to roles in both comms and research, particularly where behavioral science and storytelling meet. Based in Amsterdam
       </div>
     </div>
 
@@ -305,7 +379,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <ul class="about-list" style="margin-bottom:1.5rem">
         <li><span class="lang">Spanish</span><span class="level">Native</span></li>
         <li><span class="lang">English</span><span class="level">C2 — IELTS 8.5/9</span></li>
-        <li><span class="lang">Italian</span><span class="level">C1</span></li>
+        <li><span class="lang">Italian</span><span class="level">C1 - Advanced</span></li>
         <li><span class="lang">Dutch</span><span class="level">A2 — actively learning</span></li>
       </ul>
       <div class="about-block-title">Core skills</div>
@@ -347,7 +421,15 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <div class="credential-row"><div class="cred-title">Estrategias para la validación de apps en Salud Mental, chapter in book published by Piramide Editions</div><div class="cred-sub">Peer-reviewed · Behavioral science & mental health technology</div></div>
       <div class="credential-row"><div class="cred-title">Inventory of Interpersonal Problems-32 (IIP-32), Cogent Mental Health</div><div class="cred-sub">Peer-reviewed · Psychometric properties in adolescents</div></div>
       <div class="credential-row"><div class="cred-title">Propiedades Psicometricas del DASS-21, publication in progress, CES Magazine</div><div class="cred-sub">First Author</div></div>
-  
+    </div>
+
+     <div>
+      <div class="about-block-title">Additional Education</div>
+      <div class="credential-row"><div class="cred-title">Behavioral Design</div><div class="cred-sub">2021 - Universidad de San Andres, Argentina</div></div>
+      <div class="credential-row"><div class="cred-title">Behavioral Economics in Action</div><div class="cred-sub">2021 - University of Toronto via EdX</div></div>
+      <div class="credential-row"><div class="cred-title">MIT Leading Digital Transformation Scholarship</div><div class="cred-sub">2020 - MIT awarded by Becas Santander</div></div>
+      <div class="credential-row"><div class="cred-title">UX & UI Design Bootcamp</div><div class="cred-sub">2020 - Coderhouse</div></div>
+      <div class="credential-row"><div class="cred-title">User Experience in Service Design</div><div class="cred-sub">2020 - Universidad Austral, Argentina</div></div>
     </div>
 
   </div>
@@ -365,11 +447,11 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
     <div class="tools-grid">
       <div class="tool-group">
         <div class="tool-group-label">Research platforms</div>
-        <div class="tool-list"><span class="tool-pill">Maze</span><span class="tool-pill">Prolific</span><span class="tool-pill">Userberry</span><span class="tool-pill">BuildBetter</span><span class="tool-pill">Dovetail</span><span class="tool-pill">Optimal Workshop</span></div><span class="tool-pill">BetterFunnel</span></div><span class="tool-pill">Wistia</span></div>
+        <div class="tool-list"><span class="tool-pill">Maze</span><span class="tool-pill">Prolific</span><span class="tool-pill">Userberry</span><span class="tool-pill">BuildBetter</span><span class="tool-pill">Dovetail</span><span class="tool-pill">Optimal Workshop</span><span class="tool-pill">BetterFunnel</span><span class="tool-pill">Wistia</span></div>
       </div>
       <div class="tool-group">
         <div class="tool-group-label">Survey & analytics</div>
-        <div class="tool-list"><span class="tool-pill">Qualtrics</span><span class="tool-pill">Typeform</span><span class="tool-pill">SPSS</span><span class="tool-pill">Amplitude</span><span class="tool-pill">Mixpanel</span><span class="tool-pill">Looker</span></div><span class="tool-pill">Excel</span></div>
+        <div class="tool-list"><span class="tool-pill">Qualtrics</span><span class="tool-pill">Typeform</span><span class="tool-pill">SPSS</span><span class="tool-pill">Amplitude</span><span class="tool-pill">Mixpanel</span><span class="tool-pill">Looker</span><span class="tool-pill">Excel</span></div>
       </div>
       <div class="tool-group">
         <div class="tool-group-label">Design & workshops</div>
@@ -395,7 +477,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       </div>
       <div class="tool-group">
         <div class="tool-group-label">Creative & production</div>
-        <div class="tool-list"><span class="tool-pill">Adobe Creative Suite</span><span class="tool-pill">Canva</span><span class="tool-pill">CapCut</span><span class="tool-pill">Descript</span><span class="tool-pill">Loom</span></div>
+        <div class="tool-list"><span class="tool-pill">Adobe Illustrator</span><span class="tool-pill">Adobe Photoshop</span><span class="tool-pill">Adobe Premiere Pro</span><span class="tool-pill">Canva</span><span class="tool-pill">CapCut</span><span class="tool-pill">Descript</span><span class="tool-pill">Loom</span><span class="tool-pill">Adobe After Effects</span></div>
       </div>
       <div class="tool-group">
         <div class="tool-group-label">Web & publishing</div>
@@ -403,7 +485,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       </div>
       <div class="tool-group">
         <div class="tool-group-label">AI & productivity</div>
-        <div class="tool-list"><span class="tool-pill">Claude / LLMs</span><span class="tool-pill">CycleAI</span><span class="tool-pill">ElevenLabs</span>
+        <div class="tool-list"><span class="tool-pill">Claude / LLMs</span><span class="tool-pill">CycleAI</span><span class="tool-pill">ElevenLabs</span></div>
       </div>
     </div>
   </div>
@@ -412,7 +494,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
 <footer>
   <span class="footer-name">Santina Piazzese Spratte</span>
   <div class="footer-links">
-    <a href="/cdn-cgi/l/email-protection#7e0e0d17500d1f100a17101f3e19131f1712501d1113">Email</a>
+    <a href="mailto:psi.santina@gmail.com">Email</a>
     <a href="https://www.linkedin.com/in/santina-piazzese-spratte/" target="_blank">LinkedIn</a>
     <a href="https://www.researchgate.net" target="_blank">ResearchGate</a>
   </div>
@@ -425,12 +507,13 @@ function switchTab(tab, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('panel-' + tab).classList.add('active');
   btn.classList.add('active');
-  setTimeout(initCarousels, 50);
 }
 
 function toggleBurger() {
-  document.getElementById('burgerBtn').classList.toggle('open');
-  document.getElementById('burgerDropdown').classList.toggle('open');
+  const btn = document.getElementById('burgerBtn');
+  const dropdown = document.getElementById('burgerDropdown');
+  btn.classList.toggle('open');
+  dropdown.classList.toggle('open');
 }
 
 function burgerSwitch(tab, label, item) {
@@ -442,7 +525,6 @@ function burgerSwitch(tab, label, item) {
   document.getElementById('burgerLabel').textContent = label;
   document.getElementById('burgerBtn').classList.remove('open');
   document.getElementById('burgerDropdown').classList.remove('open');
-  setTimeout(initCarousels, 50);
 }
 
 document.addEventListener('click', function(e) {
@@ -452,82 +534,7 @@ document.addEventListener('click', function(e) {
     document.getElementById('burgerDropdown').classList.remove('open');
   }
 });
-
-function initCarousels() {
-  if (window.innerWidth > 640) return;
-  document.querySelectorAll('.projects').forEach(function(proj) {
-    if (proj.dataset.carouselInit) return;
-    proj.dataset.carouselInit = 'true';
-
-    const cards = Array.from(proj.querySelectorAll('.card'));
-    if (cards.length < 2) return;
-
-    let current = 0, startX = 0, hintShown = false;
-
-    const wrap = document.createElement('div');
-    wrap.className = 'carousel-wrap';
-    proj.parentNode.insertBefore(wrap, proj);
-    wrap.appendChild(proj);
-
-    cards[0].classList.add('carousel-active');
-
-    const dotsEl = document.createElement('div');
-    dotsEl.className = 'carousel-dots';
-    cards.forEach(function(_, i) {
-      const dot = document.createElement('button');
-      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-      dot.addEventListener('click', function() { goTo(i); });
-      dotsEl.appendChild(dot);
-    });
-    wrap.appendChild(dotsEl);
-
-    const nav = document.createElement('div');
-    nav.className = 'carousel-nav';
-    const prevBtn = document.createElement('button');
-    prevBtn.className = 'carousel-btn';
-    prevBtn.textContent = '← prev';
-    prevBtn.disabled = true;
-    prevBtn.addEventListener('click', function() { goTo(current - 1); });
-    const counter = document.createElement('span');
-    counter.className = 'carousel-counter';
-    counter.textContent = '1 / ' + cards.length;
-    const nextBtn = document.createElement('button');
-    nextBtn.className = 'carousel-btn';
-    nextBtn.textContent = 'next →';
-    nextBtn.addEventListener('click', function() { goTo(current + 1); });
-    nav.appendChild(prevBtn);
-    nav.appendChild(counter);
-    nav.appendChild(nextBtn);
-    wrap.appendChild(nav);
-
-    const hint = document.createElement('div');
-    hint.className = 'carousel-hint';
-    hint.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> swipe to explore';
-    wrap.appendChild(hint);
-    setTimeout(function() { hint.classList.add('hidden'); hintShown = true; }, 3000);
-
-    function goTo(n) {
-      if (n < 0 || n >= cards.length) return;
-      cards[current].classList.remove('carousel-active');
-      dotsEl.querySelectorAll('.carousel-dot')[current].classList.remove('active');
-      current = n;
-      cards[current].classList.add('carousel-active');
-      dotsEl.querySelectorAll('.carousel-dot')[current].classList.add('active');
-      counter.textContent = (current + 1) + ' / ' + cards.length;
-      prevBtn.disabled = current === 0;
-      nextBtn.disabled = current === cards.length - 1;
-      if (!hintShown) { hint.classList.add('hidden'); hintShown = true; }
-    }
-
-    proj.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
-    proj.addEventListener('touchend', function(e) {
-      const diff = startX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
-    }, { passive: true });
-  });
-}
-
-document.addEventListener('DOMContentLoaded', initCarousels);
 </script>
 </body>
+</html>
 </html>
