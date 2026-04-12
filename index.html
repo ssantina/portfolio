@@ -39,7 +39,6 @@ p, li, .card-text, .about-text, .footnote-text, .subtitle, .cred-sub {
 /* HEADER */
 header { padding: 3rem 0 2rem; border-bottom: 1px solid var(--rule); margin-bottom: 0; }
 .header-inner { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; }
-.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: -0.02em; color: var(--text-muted); margin-bottom: 0.75rem; opacity: 0; animation: fadeUp 0.5s ease forwards 0.1s; }
 h1 { font-size: clamp(1.75rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.06em; color: var(--text); opacity: 0; animation: fadeUp 0.5s ease forwards 0.2s; }
 .subtitle { font-size: 13px; color: var(--text-mid); font-weight: 300; margin-top: 0.85rem; max-width: 480px; opacity: 0; animation: fadeUp 0.5s ease forwards 0.3s; }
 .header-links { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; opacity: 0; animation: fadeUp 0.5s ease forwards 0.4s; }
@@ -53,33 +52,15 @@ h1 { font-size: clamp(1.75rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; l
 .tab-btn:hover { color: var(--text); }
 .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
 
-/* BURGER MENU — hidden on desktop */
+/* BURGER MENU */
 .burger-menu { display: none; margin-bottom: 2rem; position: relative; }
-.burger-btn {
-  display: flex; align-items: center; justify-content: space-between;
-  width: 100%; padding: 0.85rem 1.1rem;
-  background: var(--bg-card); border: 1px solid var(--rule);
-  border-radius: var(--radius); cursor: pointer;
-  font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700;
-  color: var(--teal); letter-spacing: -0.02em;
-  transition: background 0.2s;
-}
+.burger-btn { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0.85rem 1.1rem; background: var(--bg-card); border: 1px solid var(--rule); border-radius: var(--radius); cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--teal); letter-spacing: -0.02em; transition: background 0.2s; }
 .burger-btn:hover { background: var(--bg-lift); }
 .burger-btn svg { flex-shrink: 0; transition: transform 0.25s; }
-.burger-dropdown {
-  display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0;
-  background: var(--bg-card); border: 1px solid var(--rule);
-  border-radius: var(--radius); overflow: hidden; z-index: 100;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-}
+.burger-btn.open svg { transform: rotate(180deg); }
+.burger-dropdown { display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: var(--bg-card); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; z-index: 100; box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
 .burger-dropdown.open { display: block; }
-.burger-item {
-  display: block; width: 100%; padding: 0.85rem 1.1rem;
-  background: none; border: none; border-bottom: 1px solid var(--rule-soft);
-  font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600;
-  color: var(--text-muted); text-align: left; cursor: pointer;
-  transition: background 0.15s, color 0.15s; letter-spacing: -0.02em;
-}
+.burger-item { display: block; width: 100%; padding: 0.85rem 1.1rem; background: none; border: none; border-bottom: 1px solid var(--rule-soft); font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; color: var(--text-muted); text-align: left; cursor: pointer; transition: background 0.15s, color 0.15s; letter-spacing: -0.02em; }
 .burger-item:last-child { border-bottom: none; }
 .burger-item:hover { background: var(--bg-lift); color: var(--text); }
 .burger-item.active { color: var(--teal); background: var(--teal-dim); }
@@ -92,25 +73,40 @@ h1 { font-size: clamp(1.75rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; l
 .track-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
 .track-title { font-size: 14px; font-weight: 600; letter-spacing: -0.02em; color: var(--text-mid); white-space: nowrap; }
 .track-rule { flex: 1; height: 1px; background: var(--rule); }
-.track-count { font-size: 13px; color: var(--text); font-weight: 700; white-space: nowrap; }
+.track-label { font-size: 12px; color: var(--text-muted); font-style: italic; white-space: nowrap; }
 
 /* GRID */
 .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 
 /* CARDS */
-.card { background: var(--bg-card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.5rem; transition: background 0.2s ease, border-color 0.2s ease; }
+.card { background: var(--bg-card); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; transition: background 0.2s ease, border-color 0.2s ease; }
 .card:hover { background: var(--bg-lift); border-color: rgba(242,242,242,0.22); }
-.card-number { font-size: 12px; font-weight: 600; color: var(--teal); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
-.card-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; line-height: 1.3; letter-spacing: -0.03em; }
-.card-org { font-size: 13px; color: var(--text-mid); font-weight: 400; margin-bottom: 1rem; }
-.card-divider { height: 1px; background: var(--rule-soft); margin-bottom: 1rem; }
+
+/* CARD BANNER */
+.card-banner { width: 100%; display: block; height: auto; border-radius: 0; }
+
+/* CARD PREVIEW — always visible */
+.card-preview { padding: 1.1rem 1.5rem 0.9rem; }
+.card-org { font-size: 12px; color: var(--teal); font-weight: 600; margin-bottom: 0.3rem; letter-spacing: -0.01em; }
+.card-hook { font-size: 13px; color: var(--text-mid); font-weight: 300; line-height: 1.5; margin-bottom: 0.85rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.85rem; }
+.tag { font-size: 11px; padding: 3px 10px; border-radius: var(--radius-pill); background: rgba(242,242,242,0.1); border: 1px solid rgba(242,242,242,0.2); color: var(--text-mid); font-weight: 400; cursor: default; }
+
+/* EXPAND TOGGLE */
+.card-toggle { display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.03em; text-transform: uppercase; padding: 0 0 0.9rem 0; transition: color 0.2s; }
+.card-toggle:hover { color: var(--teal); }
+.card-toggle svg { transition: transform 0.25s; flex-shrink: 0; }
+.card-toggle.open svg { transform: rotate(180deg); }
+.card-toggle.open { color: var(--teal); }
+
+/* CARD DETAIL — hidden by default */
+.card-detail { display: none; padding: 0 1.5rem 1.25rem; border-top: 1px solid var(--rule-soft); padding-top: 1rem; }
+.card-detail.open { display: block; }
 .card-row { margin-bottom: 0.65rem; }
-.card-label { font-size: 12px; font-weight: 700; color: var(--text); display: block; margin-bottom: 3px; letter-spacing: -0.01em; }
-.card-text { font-size: 13px; color: var(--text-mid); }
+.card-label { font-size: 11px; font-weight: 700; color: var(--text); display: block; margin-bottom: 3px; letter-spacing: 0.03em; text-transform: uppercase; }
+.card-text { font-size: 12px; color: var(--text-mid); line-height: 1.65; }
 .card-outcome { margin-top: 1rem; padding: 0.75rem; background: var(--teal-dim); border-left: 2px solid var(--teal); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 12px; color: var(--text-mid); }
-.card-outcome strong { color: var(--teal); font-weight: 700; display: block; font-size: 12px; margin-bottom: 4px; }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
-.tag { font-size: 12px; padding: 4px 12px; border-radius: var(--radius-pill); background: rgba(242,242,242,0.1); border: 1px solid rgba(242,242,242,0.25); color: var(--text); font-weight: 400; cursor: default; }
+.card-outcome strong { color: var(--teal); font-weight: 700; display: block; font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 4px; }
 
 /* TOOLS */
 .tools-section { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
@@ -167,13 +163,31 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   .photo-strip { grid-template-columns: 1fr 1fr !important; }
   .photo-strip img:last-child { display: none; }
   .tools-grid { grid-template-columns: 1fr 1fr; }
-  .track-count { display: none; }
+  .track-label { display: none; }
   footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 }
-
 @media (max-width: 400px) {
   .tools-grid { grid-template-columns: 1fr; }
   h1 { letter-spacing: -0.04em; }
+}
+
+/* ── MOBILE CAROUSEL ── */
+.carousel-dots, .carousel-nav, .carousel-hint { display: none; }
+@media (max-width: 640px) {
+  .projects { display: block; position: relative; overflow: hidden; touch-action: pan-y; }
+  .projects .card { display: none; }
+  .projects .card.carousel-active { display: block; }
+  .carousel-wrap { position: relative; }
+  .carousel-dots { display: flex; justify-content: center; gap: 7px; margin-top: 1rem; }
+  .carousel-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(242,242,242,0.2); border: none; padding: 0; cursor: pointer; transition: background 0.2s, transform 0.2s; }
+  .carousel-dot.active { background: var(--teal); transform: scale(1.2); }
+  .carousel-hint { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 11px; color: var(--text-muted); font-weight: 500; margin-top: 0.6rem; opacity: 1; transition: opacity 0.5s; }
+  .carousel-hint.hidden { opacity: 0; }
+  .carousel-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 0.85rem; }
+  .carousel-btn { background: var(--bg-card); border: 1px solid var(--rule); border-radius: var(--radius-pill); color: var(--text-mid); font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; padding: 6px 16px; cursor: pointer; transition: background 0.2s, color 0.2s; letter-spacing: -0.01em; }
+  .carousel-btn:disabled { opacity: 0.25; cursor: default; }
+  .carousel-btn:not(:disabled):hover { background: var(--bg-lift); color: var(--text); }
+  .carousel-counter { font-size: 12px; color: var(--text-muted); font-weight: 600; }
 }
 </style>
 </head>
@@ -213,9 +227,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   <p style="font-size:12px; color:var(--text-mid); font-weight:600; letter-spacing:0.05em; text-transform:uppercase; margin-top:0.5rem; margin-bottom:0.5rem;">Explore my portfolio</p>
   <button class="burger-btn" id="burgerBtn" onclick="toggleBurger()">
     <span id="burgerLabel">UX & behavioral research</span>
-    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+    <svg width="14" height="8" viewBox="0 0 14 8" fill="none"><path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
   <div class="burger-dropdown" id="burgerDropdown">
     <button class="burger-item active" onclick="burgerSwitch('uxr', 'UX & behavioral research', this)">UX & behavioral research</button>
@@ -230,56 +242,103 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   <div class="track-header">
     <span class="track-title">UX & behavioral research</span>
     <span class="track-rule"></span>
-    <span class="track-count">Highlights - 2020–present</span>
+    <span class="track-label">selected work · 2020–present</span>
   </div>
   <div class="projects">
 
     <div class="card">
-      <div class="card-number">UXR — 01</div>
-      <div class="card-title">Building a research practice at an early-stage AI startup</div>
-      <div class="card-org">Almaya Life · Wellbeing Technology · 2021–2023</div>
-      <div class="card-divider"></div>
-      <div class="card-row"><span class="card-label">Role</span><span class="card-text">First research hire (founding team of 3) — built the entire research function from zero in a early AI product space</span></div>
-      <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Define and validate a product addressing sensitive human experiences — grief, end-of-life, family wellbeing — in a market with no established benchmarks, at a time when AI capabilities were evolving rapidly</span></div>
-      <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Led full discovery through go-to-market research: generative interviews, usability testing, surveys, A/B testing, persona development, journey mapping, SWOT analyses, and push notification experiments. Identified distinct segments — Alzheimer caregivers, new parents, millennial wellbeing consumers — shaping feature and engagement strategy per segment</span></div>
-      <div class="card-outcome"><strong>Outcome</strong>Research drove strategic product pivots, new product lines, and AI model fine-tuning — establishing research as the primary engine of product-market fit decisions</div>
-      <div class="tags"><span class="tag">Mixed methods</span><span class="tag">Discovery</span><span class="tag">A/B testing</span><span class="tag">Journey mapping</span><span class="tag">AI product</span><span class="tag">Segmentation</span></div>
+      <img src="silencio banner.jpg" alt="Silencio" class="card-banner" onerror="this.style.display='none'">
+      <div class="card-preview">
+        <div class="card-org">Silencio · Sound Mapping App · 2024</div>
+        <div class="card-hook">Auditing a live redesign for a product with 100k+ users and zero data infrastructure — built the entire user understanding layer from scratch.</div>
+        <div class="tags"><span class="tag">UX audit</span><span class="tag">Amplitude</span><span class="tag">Journey mapping</span><span class="tag">Qual research</span><span class="tag">Accessibility</span><span class="tag">Freelance</span></div>
+        <button class="card-toggle" onclick="toggleCard(this)">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 7L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          read more
+        </button>
+      </div>
+      <div class="card-detail">
+        <div class="card-row"><span class="card-label">Role</span><span class="card-text">Strategic UX research consultant (freelance) — brought in to build the entire user understanding layer for a product mid-redesign, with no existing analytics or user knowledge</span></div>
+        <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">A fast-growing app with 100k+ users was rebuilding their product through an external agency — essentially blind. No analytics infrastructure, no user research, no behavioral data. The redesign was already underway when I joined.</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Mapped current and new app journeys across 4 core flows — translating user actions and key moments into digital behavior events (clicks, hovers, notifications, funnels). Defined the full Amplitude event taxonomy, enabling behavioral tracking for the first time. Conducted a heuristic, usability, and accessibility audit of the new app wireframes — delivered a report with actionable design recommendations including contrast failures and friction-heavy funnels. Led end-to-end qualitative research: recruited 15 existing users through their own channels, designed the screener and discussion guide, conducted interviews, synthesized findings into an insights report with prioritized recommendations.</span></div>
+        <div class="card-outcome"><strong>Outcome</strong>Delivered the entire user understanding layer from scratch — analytics infrastructure, behavioral event taxonomy, UX audit, and qualitative insight — grounding an active agency redesign in real user behavior for the first time</div>
+      </div>
     </div>
 
     <div class="card">
-      <div class="card-number">UXR — 02</div>
-      <div class="card-title">Brand identity, dual-audience research & narrative analysis</div>
-      <div class="card-org">OurRitual · Mental Wellness B2C · 2023–2026</div>
-      <div class="card-divider"></div>
-      <div class="card-row"><span class="card-label">Role</span><span class="card-text">Sole researcher — owned the full research cycle end-to-end across product, marketing, and brand</span></div>
-      <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Understand two fundamentally different user groups — subscribers and therapists — while supporting marketing and brand decisions including a complete company rebrand</span></div>
-      <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Led a flagship mixed-methods study that directly informed the company's new name, slogan, and brand identity. Conducted narrative analysis across session transcripts and survey data. Built data-based personas with the data team. Trained team members in qualitative data collection. Integrated Amplitude analytics to complement qualitative findings</span></div>
-      <div class="card-outcome"><strong>Outcome</strong>Behavioral insights drove brand identity decisions, product development, and communication strategy simultaneously — research operating at a strategic level across the full business</div>
-      <div class="tags"><span class="tag">Mixed methods</span><span class="tag">Narrative analysis</span><span class="tag">Brand research</span><span class="tag">Amplitude</span><span class="tag">Persona dev</span><span class="tag">Dual audience</span></div>
+      <img src="almaya banner.jpg" alt="Almaya Life" class="card-banner" onerror="this.style.display='none'">
+      <div class="card-preview">
+        <div class="card-org">Almaya Life · Wellbeing Technology · 2021–2023</div>
+        <div class="card-hook">Building a research practice from zero as the first research hire at an early-stage AI startup — founding team of 3, no benchmarks, no playbook.</div>
+        <div class="tags"><span class="tag">Mixed methods</span><span class="tag">Discovery</span><span class="tag">A/B testing</span><span class="tag">Journey mapping</span><span class="tag">AI product</span><span class="tag">Segmentation</span></div>
+        <button class="card-toggle" onclick="toggleCard(this)">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 7L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          read more
+        </button>
+      </div>
+      <div class="card-detail">
+        <div class="card-row"><span class="card-label">Role</span><span class="card-text">First research hire (founding team of 3) — built the entire research function from zero in an early AI product space</span></div>
+        <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Define and validate a product addressing sensitive human experiences — grief, end-of-life, family wellbeing — in a market with no established benchmarks, at a time when AI capabilities were evolving rapidly</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Led full discovery through go-to-market research: generative interviews, usability testing, surveys, A/B testing, persona development, journey mapping, SWOT analyses, and push notification experiments. Identified distinct segments — Alzheimer caregivers, new parents, millennial wellbeing consumers — shaping feature and engagement strategy per segment</span></div>
+        <div class="card-outcome"><strong>Outcome</strong>Research drove strategic product pivots, new product lines, and AI model fine-tuning — establishing research as the primary engine of product-market fit decisions</div>
+      </div>
     </div>
 
     <div class="card">
-      <div class="card-number">UXR — 03</div>
-      <div class="card-title">Behavioral science applied to enterprise service design</div>
-      <div class="card-org">Wolox / Accenture · Banking & Healthcare · 2020–2022</div>
-      <div class="card-divider"></div>
-      <div class="card-row"><span class="card-label">Role</span><span class="card-text">UX & service design researcher within Accenture's Digital Business Design team — behavioral science lead across client engagements</span></div>
-      <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Translate behavioral research into communications and service design strategy for two major Latin American institutions with complex, multi-stakeholder ecosystems</span></div>
-      <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Contributed to dual-audience research for OSDE (end-users + health professionals) informing full digital app ecosystem redesign. Led behavioral economics application for BBVA's insurance communications — directly shaping copywriting and campaign strategy. Delivered internal trainings and presented at industry conferences</span></div>
-      <div class="card-outcome"><strong>Outcome</strong>BBVA: behavioral insights increased insurance campaign click-through rates. OSDE: research outputs led to tangible improvements in app experience for both providers and affiliates</div>
-      <div class="tags"><span class="tag">Behavioral economics</span><span class="tag">Service design</span><span class="tag">Enterprise</span><span class="tag">LATAM</span><span class="tag">Workshops</span></div>
+      <img src="ourritual banner.jpg" alt="OurRitual" class="card-banner" onerror="this.style.display='none'">
+      <div class="card-preview">
+        <div class="card-org">OurRitual · Mental Wellness B2C · 2023–2026</div>
+        <div class="card-hook">Brand identity, dual-audience research & narrative analysis — sole researcher owning the full cycle across product, marketing, and brand including a complete company rebrand.</div>
+        <div class="tags"><span class="tag">Mixed methods</span><span class="tag">Narrative analysis</span><span class="tag">Brand research</span><span class="tag">Amplitude</span><span class="tag">Persona dev</span><span class="tag">Dual audience</span></div>
+        <button class="card-toggle" onclick="toggleCard(this)">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 7L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          read more
+        </button>
+      </div>
+      <div class="card-detail">
+        <div class="card-row"><span class="card-label">Role</span><span class="card-text">Sole researcher — owned the full research cycle end-to-end across product, marketing, and brand</span></div>
+        <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Understand two fundamentally different user groups — subscribers and therapists — while supporting marketing and brand decisions including a complete company rebrand</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Led a flagship mixed-methods study that directly informed the company's new name, slogan, and brand identity. Conducted narrative analysis across session transcripts and survey data. Built data-based personas with the data team. Trained team members in qualitative data collection. Integrated Amplitude analytics to complement qualitative findings</span></div>
+        <div class="card-outcome"><strong>Outcome</strong>Behavioral insights drove brand identity decisions, product development, and communication strategy simultaneously — research operating at a strategic level across the full business</div>
+      </div>
     </div>
 
     <div class="card">
-      <div class="card-number">UXR — 04</div>
-      <div class="card-title">Crisis communication, persona strategy & conversational AI</div>
-      <div class="card-org">GoConvey · Communications Technology · 2023–present</div>
-      <div class="card-divider"></div>
-      <div class="card-row"><span class="card-label">Role</span><span class="card-text">UX researcher — market insights & communication, working directly with C-suite stakeholders</span></div>
-      <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Define new product lines and inform strategy for U.S. utilities and citizen well-being products through research into crisis communication, workflow usability, and conversational AI design</span></div>
-      <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Conducted strategic market and competitor research. Developed tone-of-voice guidelines and persona frameworks for new product lines. Facilitated workshops and brainstorming sessions with cross-functional teams. Collaborated with C-suite using a behavioral science lens</span></div>
-      <div class="card-outcome"><strong>Outcome</strong>Persona and tone-of-voice frameworks directly informed product design and go-to-market strategy across multiple new product lines</div>
-      <div class="tags"><span class="tag">Market research</span><span class="tag">Conversational AI</span><span class="tag">Crisis comms</span><span class="tag">Figma</span><span class="tag">Tone of voice</span></div>
+      <img src="accenture banner.jpg" alt="Accenture" class="card-banner" onerror="this.style.display='none'">
+      <div class="card-preview">
+        <div class="card-org">Wolox / Accenture · Banking & Healthcare · 2020–2022</div>
+        <div class="card-hook">Behavioral science applied to enterprise service design — behavioral economics lead across client engagements for two major Latin American institutions.</div>
+        <div class="tags"><span class="tag">Behavioral economics</span><span class="tag">Service design</span><span class="tag">Enterprise</span><span class="tag">LATAM</span><span class="tag">Workshops</span></div>
+        <button class="card-toggle" onclick="toggleCard(this)">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 7L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          read more
+        </button>
+      </div>
+      <div class="card-detail">
+        <div class="card-row"><span class="card-label">Role</span><span class="card-text">UX & service design researcher within Accenture's Digital Business Design team — behavioral science lead across client engagements</span></div>
+        <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Translate behavioral research into communications and service design strategy for two major Latin American institutions with complex, multi-stakeholder ecosystems</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Contributed to dual-audience research for OSDE (end-users + health professionals) informing full digital app ecosystem redesign. Led behavioral economics application for BBVA's insurance communications — directly shaping copywriting and campaign strategy. Delivered internal trainings and presented at industry conferences</span></div>
+        <div class="card-outcome"><strong>Outcome</strong>BBVA: behavioral insights increased insurance campaign click-through rates. OSDE: research outputs led to tangible improvements in app experience for both providers and affiliates</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="convey banner.jpg" alt="GoConvey" class="card-banner" onerror="this.style.display='none'">
+      <div class="card-preview">
+        <div class="card-org">GoConvey · Communications Technology · 2023–present</div>
+        <div class="card-hook">Crisis communication, persona strategy & conversational AI — experience strategy and C-suite collaboration for new product lines in U.S. utilities and citizen well-being markets.</div>
+        <div class="tags"><span class="tag">Market research</span><span class="tag">Conversational AI</span><span class="tag">Crisis comms</span><span class="tag">Figma</span><span class="tag">Tone of voice</span></div>
+        <button class="card-toggle" onclick="toggleCard(this)">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 7L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          read more
+        </button>
+      </div>
+      <div class="card-detail">
+        <div class="card-row"><span class="card-label">Role</span><span class="card-text">UX researcher — market insights & communication, working directly with C-suite stakeholders</span></div>
+        <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Define new product lines and inform strategy for U.S. utilities and citizen well-being products through research into crisis communication, workflow usability, and conversational AI design</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Conducted strategic market and competitor research. Developed tone-of-voice guidelines and persona frameworks for new product lines. Facilitated workshops and brainstorming sessions with cross-functional teams. Collaborated with C-suite using a behavioral science lens</span></div>
+        <div class="card-outcome"><strong>Outcome</strong>Persona and tone-of-voice frameworks directly informed product design and go-to-market strategy across multiple new product lines</div>
+      </div>
     </div>
 
   </div>
@@ -290,63 +349,106 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   <div class="track-header">
     <span class="track-title">Strategic communications</span>
     <span class="track-rule"></span>
-    <span class="track-count">Highlights - 2022–present</span>
+    <span class="track-label">selected work · 2022–present</span>
   </div>
   <div class="projects">
 
     <div class="card">
-      <div class="card-number">COMMS — 01</div>
-      <div class="card-title">Social listening & narrative strategy in sustainability</div>
-      <div class="card-org">SED Fund · Philanthropy · The Hague · 2026</div>
-      <div class="card-divider"></div>
-      <div class="card-row"><span class="card-label">Role</span><span class="card-text">Strategic communications — sustainability, equity & diversity philanthropy fund operating internationally</span></div>
-      <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Monitor a fast-moving sustainability and policy landscape and translate complex stakeholder intelligence into accessible, strategically aligned communications for funders, partners, and internal teams</span></div>
-      <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Daily social listening and media monitoring using Pulsar and Google Trends. Produced cross-organizational synthesis reports translating policy updates and sector trends. Designed and executed internal newsletter series and external reporting outputs</span></div>
-      <div class="card-outcome"><strong>Outcome</strong>Ongoing strategic communications informing organizational positioning and funding priorities within the international sustainability landscape</div>
-      <div class="tags"><span class="tag">Pulsar</span><span class="tag">Social listening</span><span class="tag">Media monitoring</span><span class="tag">Sustainability</span><span class="tag">Newsletter</span></div>
+      <img src="sed banner.jpg" alt="SED Fund" class="card-banner" onerror="this.style.display='none'">
+      <div class="card-preview">
+        <div class="card-org">SED Fund · Philanthropy · The Hague · 2026</div>
+        <div class="card-hook">Social listening & narrative strategy in sustainability — monitoring a fast-moving policy landscape and translating stakeholder intelligence into organizational communications.</div>
+        <div class="tags"><span class="tag">Pulsar</span><span class="tag">Social listening</span><span class="tag">Media monitoring</span><span class="tag">Sustainability</span><span class="tag">Newsletter</span></div>
+        <button class="card-toggle" onclick="toggleCard(this)">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 7L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          read more
+        </button>
+      </div>
+      <div class="card-detail">
+        <div class="card-row"><span class="card-label">Role</span><span class="card-text">Strategic communications — sustainability, equity & diversity philanthropy fund operating internationally</span></div>
+        <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Monitor a fast-moving sustainability and policy landscape and translate complex stakeholder intelligence into accessible, strategically aligned communications for funders, partners, and internal teams</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Daily social listening and media monitoring using Pulsar and Google Trends. Produced cross-organizational synthesis reports translating policy updates and sector trends. Designed and executed internal newsletter series and external reporting outputs</span></div>
+        <div class="card-outcome"><strong>Outcome</strong>Ongoing strategic communications informing organizational positioning and funding priorities within the international sustainability landscape</div>
+      </div>
     </div>
 
     <div class="card">
-      <div class="card-number">COMMS — 02</div>
-      <div class="card-title">Full program coordination for an international scientific conference</div>
-      <div class="card-org">LIPSTIC / Society for Psychotherapy Research · 2023–2024</div>
-      <div class="card-divider"></div>
-      <div class="card-row"><span class="card-label">Role</span><span class="card-text">Scientific program coordinator — coordinator for all programming and scientific communications, managing a volunteer team of 10</span></div>
-      <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Coordinate the largest conference in the society's history — 14 simultaneous hybrid tracks, three languages, distributed teams across Dublin and global organizers — with zero tolerance for error</span></div>
-      <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Managed end-to-end scientific programming, all communications and materials, cross-border logistics, vendor relations, and multi-currency budgets. Set timelines and ensured cohesive delivery across a volunteer team of 10. Coordinated with Myonvent for hybrid platform setup</span></div>
-      <div class="card-outcome"><strong>Outcome</strong>800+ speakers · 4 days · 14 simultaneous hybrid tracks — delivered on time, on message, across three languages. Largest event in the society's history</div>
-      <div class="tags"><span class="tag">Program coordination</span><span class="tag">Event comms</span><span class="tag">Multilingual</span><span class="tag">Vol. management</span><span class="tag">Hybrid events</span></div>
+      <img src="spr banner.jpg" alt="SPR / LIPSTIC" class="card-banner" onerror="this.style.display='none'">
+      <div class="card-preview">
+        <div class="card-org">LIPSTIC / Society for Psychotherapy Research · 2023–2024</div>
+        <div class="card-hook">Full program coordination for the largest international conference in the society's history — 800+ speakers, 14 simultaneous hybrid tracks, three languages.</div>
+        <div class="tags"><span class="tag">Program coordination</span><span class="tag">Event comms</span><span class="tag">Multilingual</span><span class="tag">Vol. management</span><span class="tag">Hybrid events</span></div>
+        <button class="card-toggle" onclick="toggleCard(this)">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 7L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          read more
+        </button>
+      </div>
+      <div class="card-detail">
+        <div class="card-row"><span class="card-label">Role</span><span class="card-text">Scientific program coordinator — coordinator for all programming and scientific communications, managing a volunteer team of 10</span></div>
+        <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Coordinate the largest conference in the society's history — 14 simultaneous hybrid tracks, three languages, distributed teams across Dublin and global organizers — with zero tolerance for error</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Managed end-to-end scientific programming, all communications and materials, cross-border logistics, vendor relations, and multi-currency budgets. Set timelines and ensured cohesive delivery across a volunteer team of 10. Coordinated with Myonvent for hybrid platform setup</span></div>
+        <div class="card-outcome"><strong>Outcome</strong>800+ speakers · 4 days · 14 simultaneous hybrid tracks — delivered on time, on message, across three languages. Largest event in the society's history</div>
+      </div>
     </div>
 
     <div class="card">
-      <div class="card-number">COMMS — 03</div>
-      <div class="card-title">12-month communications strategy for an AI ethics nonprofit</div>
-      <div class="card-org">EncodeAI Netherlands · Amsterdam · 2025–2026</div>
-      <div class="card-divider"></div>
-      <div class="card-row"><span class="card-label">Role</span><span class="card-text">Communications lead & board member — volunteer leadership role, zero budget</span></div>
-      <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Build a full external and internal communications strategy from scratch for a new AI ethics nonprofit — tone of voice, channel strategy, and public-facing content for non-specialist audiences, with no dedicated budget</span></div>
-      <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Developed a 3-6-12-month organizational communications strategy covering tone of voice, channel priorities, and content pipeline. Lead volunteers and assigned roles to carry out strategy across social media, website, newsletter and internal team comms channels. Created educational content on ethical AI for general audiences. Built a dual-scenario roadmap — zero budget and grant-funded — with KPIs at each phase. Strategy delivered 2026 — currently in implementation</span></div>
-      <div class="card-outcome"><strong>Outcome</strong>End-to-end communications framework delivered: brand voice, channel strategy, campaign-specific messaging, SEO plan, internal comms toolkit, and a phased roadmap with measurable KPIs across the 3-6-12 months mark</div>
-      <div class="tags"><span class="tag">Comms strategy</span><span class="tag">AI ethics</span><span class="tag">Content creation</span><span class="tag">Zero budget</span><span class="tag">Nonprofit</span><span class="tag">Team management</span></div>
+      <img src="encode banner.jpg" alt="EncodeAI Netherlands" class="card-banner" onerror="this.style.display='none'">
+      <div class="card-preview">
+        <div class="card-org">EncodeAI Netherlands · Amsterdam · 2025–2026</div>
+        <div class="card-hook">12-month communications strategy for an AI ethics nonprofit — built from scratch with zero budget, dual-scenario roadmap, and measurable KPIs across every phase.</div>
+        <div class="tags"><span class="tag">Comms strategy</span><span class="tag">AI ethics</span><span class="tag">Content creation</span><span class="tag">Zero budget</span><span class="tag">Nonprofit</span><span class="tag">Team management</span></div>
+        <button class="card-toggle" onclick="toggleCard(this)">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 7L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          read more
+        </button>
+      </div>
+      <div class="card-detail">
+        <div class="card-row"><span class="card-label">Role</span><span class="card-text">Communications lead & board member — volunteer leadership role, zero budget</span></div>
+        <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Build a full external and internal communications strategy from scratch for a new AI ethics nonprofit — tone of voice, channel strategy, and public-facing content for non-specialist audiences, with no dedicated budget</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Developed a 3-6-12-month organizational communications strategy covering tone of voice, channel priorities, and content pipeline. Led volunteers and assigned roles to carry out strategy across social media, website, newsletter and internal team comms channels. Created educational content on ethical AI for general audiences. Built a dual-scenario roadmap — zero budget and grant-funded — with KPIs at each phase. Strategy delivered 2026 — currently in implementation</span></div>
+        <div class="card-outcome"><strong>Outcome</strong>End-to-end communications framework delivered: brand voice, channel strategy, campaign-specific messaging, SEO plan, internal comms toolkit, and a phased roadmap with measurable KPIs across the 3-6-12 months mark</div>
+      </div>
     </div>
 
     <div class="card">
-      <div class="card-number">COMMS — 04</div>
-      <div class="card-title">Email campaigns, event communications & digital content</div>
-      <div class="card-org">International Psychoanalytical Association · Freelance · 2022–2023</div>
-      <div class="card-divider"></div>
-      <div class="card-row"><span class="card-label">Role</span><span class="card-text">Communications assistant — freelance support for a large international professional association</span></div>
-      <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Support communications and event coordination for a large-scale international organization with a global professional membership</span></div>
-      <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Managed large-scale email campaigns via Mailchimp to international professional audiences. Coordinated and hosted online events, managing speakers and logistics. Designed event collateral and flyers. Produced post-event reports with engagement metrics. Created and scheduled social media content</span></div>
-      <div class="card-outcome"><strong>Outcome</strong>End-to-end communications support across email, events, and social — with measurable engagement tracked through post-event reporting</div>
-      <div class="tags"><span class="tag">Mailchimp</span><span class="tag">Email marketing</span><span class="tag">Event coord.</span><span class="tag">Social media</span><span class="tag">Metrics</span></div>
+      <img src="ipa banner.jpg" alt="International Psychoanalytical Association" class="card-banner" onerror="this.style.display='none'">
+      <div class="card-preview">
+        <div class="card-org">International Psychoanalytical Association · Freelance · 2022–2023</div>
+        <div class="card-hook">Email campaigns, event communications & digital content for a large international professional association with a global membership.</div>
+        <div class="tags"><span class="tag">Mailchimp</span><span class="tag">Email marketing</span><span class="tag">Event coord.</span><span class="tag">Social media</span><span class="tag">Metrics</span></div>
+        <button class="card-toggle" onclick="toggleCard(this)">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 7L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          read more
+        </button>
+      </div>
+      <div class="card-detail">
+        <div class="card-row"><span class="card-label">Role</span><span class="card-text">Communications assistant — freelance support for a large international professional association</span></div>
+        <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Support communications and event coordination for a large-scale international organization with a global professional membership</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Managed large-scale email campaigns via Mailchimp to international professional audiences. Coordinated and hosted online events, managing speakers and logistics. Designed event collateral and flyers. Produced post-event reports with engagement metrics. Created and scheduled social media content</span></div>
+        <div class="card-outcome"><strong>Outcome</strong>End-to-end communications support across email, events, and social — with measurable engagement tracked through post-event reporting</div>
+      </div>
     </div>
 
-  </div>
 
-  <div class="footnote" style="margin-top:2rem">
-    <div class="footnote-label">Writing & audience development</div>
-    <div class="footnote-text">Independent writer with a track record of organic audience growth across platforms over a decade — including a Substack publication with <strong>2,600+ subscribers</strong> and individual pieces reaching <strong>7,000+ engagements</strong>, a niche UX/psychology Instagram grown to <strong>1,100+ followers</strong>, and a lifestyle TikTok reaching <strong>5,000+ followers</strong>. Consistent pattern: building engaged audiences from zero, without paid promotion, across different niches and formats.</div>
+    <div class="card">
+      <img src="substack banner.jpg" alt="Substack" class="card-banner" onerror="this.style.display='none'">
+      <div class="card-preview">
+        <div class="card-org">Independent writing practice · Substack · 2022–present</div>
+        <div class="card-hook">Building an engaged audience from zero — behavioral science translated into essays that reach people. 2,600+ subscribers, pieces reaching 7,000+ engagements, entirely organic.</div>
+        <div class="tags"><span class="tag">Long-form writing</span><span class="tag">Audience development</span><span class="tag">Behavioral science</span><span class="tag">Organic growth</span><span class="tag">Substack</span></div>
+        <button class="card-toggle" onclick="toggleCard(this)">
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 7L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          read more
+        </button>
+      </div>
+      <div class="card-detail">
+        <div class="card-row"><span class="card-label">Role</span><span class="card-text">Independent writer — sole creator, editor, and growth strategist for a Substack publication at the intersection of behavioral science, psychology, and everyday life</span></div>
+        <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Build a genuine readership from zero, without paid promotion, in a saturated content landscape — and do it while writing about complex psychological and behavioral concepts in a way that feels human rather than academic</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Published essays applying behavioral science frameworks to relationships, identity, and human behavior — consistently finding the angle that makes research feel personal. Grew the publication organically to 2,600+ subscribers through quality and consistency alone. Individual pieces have reached 7,000+ engagements. Built and maintained presence across multiple platforms (Instagram, TikTok, Twitter/X) around the same themes, reaching 1,100+ followers on a niche UX/psychology account and 5,000+ on lifestyle content — demonstrating the ability to adapt voice and format across audiences and contexts.</span></div>
+        <div class="card-outcome"><strong>Outcome</strong>A decade-long track record of building engaged audiences from zero across different niches and formats — without paid promotion, without institutional backing. Proof that the ability to translate complex ideas into content people actually want to read is not a soft skill, it's a craft.</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -423,7 +525,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <div class="credential-row"><div class="cred-title">Propiedades Psicometricas del DASS-21, publication in progress, CES Magazine</div><div class="cred-sub">First Author</div></div>
     </div>
 
-     <div>
+    <div>
       <div class="about-block-title">Additional Education</div>
       <div class="credential-row"><div class="cred-title">Behavioral Design</div><div class="cred-sub">2021 - Universidad de San Andres, Argentina</div></div>
       <div class="credential-row"><div class="cred-title">Behavioral Economics in Action</div><div class="cred-sub">2021 - University of Toronto via EdX</div></div>
@@ -441,7 +543,6 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
     <span class="track-title">Tools & platforms</span>
     <span class="track-rule"></span>
   </div>
-
   <div class="tools-section tools-section-first">
     <div class="tools-title">Research & UX</div>
     <div class="tools-grid">
@@ -463,7 +564,6 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       </div>
     </div>
   </div>
-
   <div class="tools-section">
     <div class="tools-title">Communications & content</div>
     <div class="tools-grid">
@@ -507,13 +607,12 @@ function switchTab(tab, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('panel-' + tab).classList.add('active');
   btn.classList.add('active');
+  setTimeout(initCarousels, 50);
 }
 
 function toggleBurger() {
-  const btn = document.getElementById('burgerBtn');
-  const dropdown = document.getElementById('burgerDropdown');
-  btn.classList.toggle('open');
-  dropdown.classList.toggle('open');
+  document.getElementById('burgerBtn').classList.toggle('open');
+  document.getElementById('burgerDropdown').classList.toggle('open');
 }
 
 function burgerSwitch(tab, label, item) {
@@ -525,6 +624,7 @@ function burgerSwitch(tab, label, item) {
   document.getElementById('burgerLabel').textContent = label;
   document.getElementById('burgerBtn').classList.remove('open');
   document.getElementById('burgerDropdown').classList.remove('open');
+  setTimeout(initCarousels, 50);
 }
 
 document.addEventListener('click', function(e) {
@@ -534,7 +634,80 @@ document.addEventListener('click', function(e) {
     document.getElementById('burgerDropdown').classList.remove('open');
   }
 });
+
+function toggleCard(btn) {
+  const detail = btn.closest('.card-preview').nextElementSibling;
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open');
+  btn.classList.toggle('open');
+  btn.querySelector('span') && (btn.querySelector('span').textContent = isOpen ? 'read more' : 'read less');
+  // update text node directly
+  const nodes = btn.childNodes;
+  for (let n of nodes) {
+    if (n.nodeType === 3 && n.textContent.trim()) {
+      n.textContent = isOpen ? ' read more' : ' read less';
+    }
+  }
+}
+
+function initCarousels() {
+  if (window.innerWidth > 640) return;
+  document.querySelectorAll('.projects').forEach(function(proj) {
+    if (proj.dataset.carouselInit) return;
+    proj.dataset.carouselInit = 'true';
+    const cards = Array.from(proj.querySelectorAll('.card'));
+    if (cards.length < 2) return;
+    let current = 0, startX = 0, hintShown = false;
+    const wrap = document.createElement('div');
+    wrap.className = 'carousel-wrap';
+    proj.parentNode.insertBefore(wrap, proj);
+    wrap.appendChild(proj);
+    cards[0].classList.add('carousel-active');
+    const dotsEl = document.createElement('div');
+    dotsEl.className = 'carousel-dots';
+    cards.forEach(function(_, i) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', function() { goTo(i); });
+      dotsEl.appendChild(dot);
+    });
+    wrap.appendChild(dotsEl);
+    const nav = document.createElement('div');
+    nav.className = 'carousel-nav';
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'carousel-btn'; prevBtn.textContent = '← prev'; prevBtn.disabled = true;
+    prevBtn.addEventListener('click', function() { goTo(current - 1); });
+    const counter = document.createElement('span');
+    counter.className = 'carousel-counter'; counter.textContent = '1 / ' + cards.length;
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'carousel-btn'; nextBtn.textContent = 'next →';
+    nextBtn.addEventListener('click', function() { goTo(current + 1); });
+    nav.appendChild(prevBtn); nav.appendChild(counter); nav.appendChild(nextBtn);
+    wrap.appendChild(nav);
+    const hint = document.createElement('div');
+    hint.className = 'carousel-hint';
+    hint.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> swipe to explore';
+    wrap.appendChild(hint);
+    setTimeout(function() { hint.classList.add('hidden'); hintShown = true; }, 3000);
+    function goTo(n) {
+      if (n < 0 || n >= cards.length) return;
+      cards[current].classList.remove('carousel-active');
+      dotsEl.querySelectorAll('.carousel-dot')[current].classList.remove('active');
+      current = n;
+      cards[current].classList.add('carousel-active');
+      dotsEl.querySelectorAll('.carousel-dot')[current].classList.add('active');
+      counter.textContent = (current + 1) + ' / ' + cards.length;
+      prevBtn.disabled = current === 0; nextBtn.disabled = current === cards.length - 1;
+      if (!hintShown) { hint.classList.add('hidden'); hintShown = true; }
+    }
+    proj.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+    proj.addEventListener('touchend', function(e) {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) diff > 0 ? goTo(current + 1) : goTo(current - 1);
+    }, { passive: true });
+  });
+}
+document.addEventListener('DOMContentLoaded', initCarousels);
 </script>
 </body>
-</html>
 </html>
