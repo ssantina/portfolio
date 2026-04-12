@@ -23,17 +23,8 @@
   --radius-pill: 99px;
 }
 html { scroll-behavior: smooth; }
-body {
-  font-family: 'Montserrat', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  font-size: 14px;
-  -webkit-font-smoothing: antialiased;
-}
-p, li, .card-text, .about-text, .footnote-text, .subtitle, .cred-sub {
-  line-height: 1.65;
-  letter-spacing: -0.01em;
-}
+body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; -webkit-font-smoothing: antialiased; }
+p, li, .card-text, .about-text, .footnote-text, .subtitle, .cred-sub { line-height: 1.65; letter-spacing: -0.01em; }
 .page { max-width: 940px; margin: 0 auto; padding: 0 1.25rem 6rem; }
 
 /* HEADER */
@@ -52,7 +43,7 @@ h1 { font-size: clamp(1.75rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; l
 .tab-btn:hover { color: var(--text); }
 .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
 
-/* BURGER MENU */
+/* BURGER */
 .burger-menu { display: none; margin-bottom: 2rem; position: relative; }
 .burger-btn { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0.85rem 1.1rem; background: var(--bg-card); border: 1px solid var(--rule); border-radius: var(--radius); cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--teal); letter-spacing: -0.02em; transition: background 0.2s; }
 .burger-btn:hover { background: var(--bg-lift); }
@@ -81,25 +72,16 @@ h1 { font-size: clamp(1.75rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; l
 /* CARDS */
 .card { background: var(--bg-card); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; transition: background 0.2s ease, border-color 0.2s ease; }
 .card:hover { background: var(--bg-lift); border-color: rgba(242,242,242,0.22); }
-
-/* CARD BANNER */
 .card-banner { width: 100%; display: block; height: auto; border-radius: 0; }
-
-/* CARD PREVIEW — always visible */
 .card-preview { padding: 1.1rem 1.5rem 0.9rem; }
 .card-org { font-size: 12px; color: var(--teal); font-weight: 600; margin-bottom: 0.3rem; letter-spacing: -0.01em; }
 .card-hook { font-size: 13px; color: var(--text-mid); font-weight: 300; line-height: 1.5; margin-bottom: 0.85rem; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.85rem; }
 .tag { font-size: 11px; padding: 3px 10px; border-radius: var(--radius-pill); background: rgba(242,242,242,0.1); border: 1px solid rgba(242,242,242,0.2); color: var(--text-mid); font-weight: 400; cursor: default; }
-
-/* EXPAND TOGGLE */
-.card-toggle { display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; color: var(--teal); letter-spacing: 0.03em; text-transform: uppercase; padding: 0 0 0.9rem 0; transition: color 0.2s; }
-.card-toggle:hover { color: var(--teal); }
+.card-toggle { display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; color: var(--teal); letter-spacing: 0.03em; text-transform: uppercase; padding: 0 0 0.9rem 0; transition: color 0.2s; }
+.card-toggle:hover { opacity: 0.8; }
 .card-toggle svg { transition: transform 0.25s; flex-shrink: 0; }
 .card-toggle.open svg { transform: rotate(180deg); }
-.card-toggle.open { color: var(--teal); }
-
-/* CARD DETAIL — hidden by default */
 .card-detail { display: none; padding: 0 1.5rem 1.25rem; border-top: 1px solid var(--rule-soft); padding-top: 1rem; }
 .card-detail.open { display: block; }
 .card-row { margin-bottom: 0.65rem; }
@@ -108,37 +90,31 @@ h1 { font-size: clamp(1.75rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; l
 .card-outcome { margin-top: 1rem; padding: 0.75rem; background: var(--teal-dim); border-left: 2px solid var(--teal); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 12px; color: var(--text-mid); }
 .card-outcome strong { color: var(--teal); font-weight: 700; display: block; font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 4px; }
 
-/* TOOLS */
-.tools-section { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
-.tools-section-first { margin-top: 0; padding-top: 0; border-top: none; }
-.tools-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 1.5rem; letter-spacing: -0.02em; }
-.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.25rem; }
-.tool-group-label { font-size: 12px; font-weight: 600; color: var(--text-mid); margin-bottom: 0.5rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule-soft); }
+/* TOOLS — card-style sections with teal accent */
+.tools-section { margin-top: 2rem; padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--rule); border-left: 3px solid var(--teal); border-radius: var(--radius); }
+.tools-section-first { margin-top: 0; }
+.tools-title { font-size: 11px; font-weight: 700; color: var(--teal); margin-bottom: 1.25rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.tool-group-label { font-size: 11px; font-weight: 600; color: var(--text-mid); margin-bottom: 0.5rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule-soft); letter-spacing: 0.02em; }
 .tool-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.5rem; }
 .tool-pill { font-size: 12px; padding: 4px 12px; border-radius: var(--radius-pill); background: rgba(242,242,242,0.1); border: 1px solid rgba(242,242,242,0.25); color: var(--text); font-weight: 400; cursor: default; }
 
-/* FOOTNOTE */
-.footnote { margin-top: 2rem; padding: 1.25rem 1.5rem; border: 1px solid var(--rule); border-left: 3px solid var(--teal); background: var(--bg-card); border-radius: var(--radius); }
-.footnote-label { font-size: 12px; font-weight: 600; color: var(--teal); margin-bottom: 0.5rem; }
-.footnote-text { font-size: 13px; color: var(--text-mid); }
-.footnote-text strong { font-weight: 600; color: var(--text); }
-
-/* ABOUT */
+/* ABOUT — teal accents throughout */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
-.about-block-title { font-size: 13px; font-weight: 600; color: var(--text-mid); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); letter-spacing: -0.02em; }
+.about-block-title { font-size: 11px; font-weight: 700; color: var(--teal); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); letter-spacing: 0.08em; text-transform: uppercase; }
 .about-text { font-size: 13px; color: var(--text-mid); font-weight: 300; margin-bottom: 0.75rem; }
 .about-list { list-style: none; }
 .about-list li { font-size: 13px; color: var(--text-mid); font-weight: 300; padding: 0.35rem 0; border-bottom: 1px solid var(--rule-soft); display: flex; justify-content: space-between; gap: 1rem; line-height: 1.5; }
 .about-list li:last-child { border-bottom: none; }
 .about-list .lang { font-weight: 600; color: var(--text); }
 .about-list .level { color: var(--text-mid); font-size: 12px; }
-.credential-row { padding: 0.6rem 0; border-bottom: 1px solid var(--rule-soft); }
+.credential-row { padding: 0.6rem 0 0.6rem 0.75rem; border-bottom: 1px solid var(--rule-soft); border-left: 2px solid rgba(92,225,230,0.25); margin-bottom: 2px; }
 .credential-row:last-child { border-bottom: none; }
 .cred-title { font-size: 13px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
 .cred-sub { font-size: 12px; color: var(--text-mid); font-weight: 300; margin-top: 2px; }
 .skill-grid { display: flex; flex-wrap: wrap; gap: 7px; }
 .skill-pill { font-size: 12px; padding: 4px 12px; border-radius: var(--radius-pill); background: rgba(242,242,242,0.1); border: 1px solid rgba(242,242,242,0.25); color: var(--text); font-weight: 400; cursor: default; }
-.a11y-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: var(--radius-pill); background: rgba(242,242,242,0.07); border: 1px solid var(--rule); font-size: 12px; color: var(--text-mid); font-weight: 400; margin-top: 0.75rem; line-height: 1.5; }
+.a11y-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--radius); background: var(--teal-dim); border: 1px solid rgba(92,225,230,0.3); font-size: 13px; color: var(--text); font-weight: 500; margin-top: 1rem; line-height: 1.5; letter-spacing: -0.01em; }
 .a11y-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
 
 /* FOOTER */
@@ -150,7 +126,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ── MOBILE ── */
+/* MOBILE */
 @media (max-width: 640px) {
   .page { padding: 0 1rem 4rem; }
   .header-inner { grid-template-columns: 1fr; gap: 1.25rem; }
@@ -162,7 +138,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   .about-grid { grid-template-columns: 1fr; }
   .photo-strip { grid-template-columns: 1fr 1fr !important; }
   .photo-strip img:last-child { display: none; }
-  .tools-grid { grid-template-columns: 1fr 1fr; }
+  .tools-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .track-label { display: none; }
   footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 }
@@ -171,7 +147,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   h1 { letter-spacing: -0.04em; }
 }
 
-/* ── MOBILE CAROUSEL ── */
+/* MOBILE CAROUSEL */
 .carousel-dots, .carousel-nav, .carousel-hint { display: none; }
 @media (max-width: 640px) {
   .projects { display: block; position: relative; overflow: hidden; touch-action: pan-y; }
@@ -214,7 +190,6 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   </div>
 </header>
 
-<!-- DESKTOP TABS -->
 <div class="tabs">
   <button class="tab-btn active" onclick="switchTab('uxr', this)">UX & behavioral research</button>
   <button class="tab-btn" onclick="switchTab('comms', this)">Strategic communications</button>
@@ -222,7 +197,6 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   <button class="tab-btn" onclick="switchTab('tools', this)">Tools</button>
 </div>
 
-<!-- MOBILE BURGER MENU -->
 <div class="burger-menu" id="burgerMenu">
   <p style="font-size:12px; color:var(--text-mid); font-weight:600; letter-spacing:0.05em; text-transform:uppercase; margin-top:0.5rem; margin-bottom:0.5rem;">Explore my portfolio</p>
   <button class="burger-btn" id="burgerBtn" onclick="toggleBurger()">
@@ -242,7 +216,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   <div class="track-header">
     <span class="track-title">UX & behavioral research</span>
     <span class="track-rule"></span>
-    <span class="track-label">Selected work · 2020–present</span>
+    <span class="track-label">selected work · 2020–present</span>
   </div>
   <div class="projects">
 
@@ -349,7 +323,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   <div class="track-header">
     <span class="track-title">Strategic communications</span>
     <span class="track-rule"></span>
-    <span class="track-label">Selected work · 2022–present</span>
+    <span class="track-label">selected work · 2022–present</span>
   </div>
   <div class="projects">
 
@@ -429,7 +403,6 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       </div>
     </div>
 
-
     <div class="card">
       <img src="substack banner.jpg" alt="Substack" class="card-banner" onerror="this.style.display='none'">
       <div class="card-preview">
@@ -444,7 +417,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <div class="card-detail">
         <div class="card-row"><span class="card-label">Role</span><span class="card-text">Independent writer — sole creator, editor, and growth strategist for a Substack publication at the intersection of behavioral science, psychology, and everyday life</span></div>
         <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Build a genuine readership from zero, without paid promotion, in a saturated content landscape — and do it while writing about complex psychological and behavioral concepts in a way that feels human rather than academic</span></div>
-        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Published essays applying behavioral science frameworks to relationships, identity, and human behavior — consistently finding the angle that makes research feel personal. Grew the publication organically to 2,600+ subscribers through quality and consistency alone. Individual pieces have reached 7,000+ engagements. Built and maintained presence across multiple platforms (Instagram, TikTok, Twitter/X) around the same themes, reaching 1,100+ followers on a niche UX/psychology account and 5,000+ on lifestyle content — demonstrating the ability to adapt voice and format across audiences and contexts.</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Published essays applying behavioral science frameworks to relationships, identity, and human behavior — consistently finding the angle that makes research feel personal. Grew the publication organically to 2,600+ subscribers through quality and consistency alone. Individual pieces have reached 7,000+ engagements. Built and maintained presence across multiple platforms (Instagram, TikTok, Twitter/X) around the same themes, reaching 1,100+ followers on a niche UX/psychology account and 5,000+ on lifestyle content.</span></div>
         <div class="card-outcome"><strong>Outcome</strong>A decade-long track record of building engaged audiences from zero across different niches and formats — without paid promotion, without institutional backing. Proof that the ability to translate complex ideas into content people actually want to read is not a soft skill, it's a craft.</div>
       </div>
     </div>
@@ -472,7 +445,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <p class="about-text">I've spent six years doing UX and behavioral research across startups, scale-ups, and enterprise — and have been building toward strategic communications in sustainability and social impact.</p>
       <div class="a11y-badge">
         <span class="a11y-dot"></span>
-        Open to roles in both comms and research, particularly where behavioral science and storytelling meet. Based in Amsterdam
+        Open to roles in both comms and research, particularly where behavioral science and storytelling meet. Based in Amsterdam.
       </div>
     </div>
 
@@ -481,7 +454,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <ul class="about-list" style="margin-bottom:1.5rem">
         <li><span class="lang">Spanish</span><span class="level">Native</span></li>
         <li><span class="lang">English</span><span class="level">C2 — IELTS 8.5/9</span></li>
-        <li><span class="lang">Italian</span><span class="level">C1 - Advanced</span></li>
+        <li><span class="lang">Italian</span><span class="level">C1 — Advanced</span></li>
         <li><span class="lang">Dutch</span><span class="level">A2 — actively learning</span></li>
       </ul>
       <div class="about-block-title">Core skills</div>
@@ -499,7 +472,6 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
         <span class="skill-pill">Stakeholder management</span>
         <span class="skill-pill">Video & audio production</span>
         <span class="skill-pill">Audience development</span>
-        <span class="skill-pill">Article production</span>
         <span class="skill-pill">Audience segmentation & Persona creation</span>
         <span class="skill-pill">Product Analytics</span>
         <span class="skill-pill">Qualitative research design & analysis</span>
@@ -514,24 +486,22 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <div class="about-block-title">Formal Education</div>
       <div class="credential-row"><div class="cred-title">MSc Psychology — Social Influence</div><div class="cred-sub">University of Amsterdam · 2025–2026 · Thesis on nonverbal behavior</div></div>
       <div class="credential-row"><div class="cred-title">Postgraduate MA — Cognitive Psychotherapy</div><div class="cred-sub">Universidad Nacional de Mar del Plata · 2023–2024</div></div>
-      <div class="credential-row"><div class="cred-title">BSc Psychology — Honors (Licenciatura)</div><div class="cred-sub">Universidad de Belgrano · 2018–2021 · Academic excellence & Rotary awards · Thesis on Scalability of Mental Health Apps</div></div>
+      <div class="credential-row"><div class="cred-title">BSc Psychology — Honors (Licenciatura)</div><div class="cred-sub">Universidad de Belgrano · 2018–2021 · Academic excellence & Rotary awards</div></div>
       <div class="credential-row"><div class="cred-title">Technical Diploma — Media Production (Cum Laude)</div><div class="cred-sub">ORT Argentina · 2013–2017</div></div>
     </div>
 
     <div>
       <div class="about-block-title">Publications</div>
-      <div class="credential-row"><div class="cred-title">Estrategias para la validación de apps en Salud Mental, chapter in book published by Piramide Editions</div><div class="cred-sub">Peer-reviewed · Behavioral science & mental health technology</div></div>
-      <div class="credential-row"><div class="cred-title">Inventory of Interpersonal Problems-32 (IIP-32), Cogent Mental Health</div><div class="cred-sub">Peer-reviewed · Psychometric properties in adolescents</div></div>
-      <div class="credential-row"><div class="cred-title">Propiedades Psicometricas del DASS-21, publication in progress, CES Magazine</div><div class="cred-sub">First Author</div></div>
+      <div class="credential-row"><div class="cred-title">Estrategias para la validación de apps en Salud Mental</div><div class="cred-sub">Peer-reviewed · Piramide Editions · Behavioral science & mental health technology</div></div>
+      <div class="credential-row"><div class="cred-title">Inventory of Interpersonal Problems-32 (IIP-32)</div><div class="cred-sub">Peer-reviewed · Cogent Mental Health · Psychometric properties in adolescents</div></div>
+      <div class="credential-row"><div class="cred-title">Propiedades Psicometricas del DASS-21</div><div class="cred-sub">First Author · CES Magazine · In progress</div></div>
     </div>
 
     <div>
       <div class="about-block-title">Additional Education</div>
-      <div class="credential-row"><div class="cred-title">Behavioral Design</div><div class="cred-sub">2021 - Universidad de San Andres, Argentina</div></div>
-      <div class="credential-row"><div class="cred-title">Behavioral Economics in Action</div><div class="cred-sub">2021 - University of Toronto via EdX</div></div>
-      <div class="credential-row"><div class="cred-title">MIT Leading Digital Transformation Scholarship</div><div class="cred-sub">2020 - MIT awarded by Becas Santander</div></div>
-      <div class="credential-row"><div class="cred-title">UX & UI Design Bootcamp</div><div class="cred-sub">2020 - Coderhouse</div></div>
-      <div class="credential-row"><div class="cred-title">User Experience in Service Design</div><div class="cred-sub">2020 - Universidad Austral, Argentina</div></div>
+      <div class="credential-row"><div class="cred-title">Behavioral Design</div><div class="cred-sub">2021 · Universidad de San Andres, Argentina</div></div>
+      <div class="credential-row"><div class="cred-title">Behavioral Economics in Action</div><div class="cred-sub">2021 · University of Toronto via EdX</div></div>
+      <div class="credential-row"><div class="cred-title">MIT Leading Digital Transformation Scholarship</div><div class="cred-sub">2020 · MIT, awarded by Becas Santander</div></div>
     </div>
 
   </div>
@@ -543,6 +513,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
     <span class="track-title">Tools & platforms</span>
     <span class="track-rule"></span>
   </div>
+
   <div class="tools-section tools-section-first">
     <div class="tools-title">Research & UX</div>
     <div class="tools-grid">
@@ -564,6 +535,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       </div>
     </div>
   </div>
+
   <div class="tools-section">
     <div class="tools-title">Communications & content</div>
     <div class="tools-grid">
@@ -577,7 +549,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       </div>
       <div class="tool-group">
         <div class="tool-group-label">Creative & production</div>
-        <div class="tool-list"><span class="tool-pill">Adobe Illustrator</span><span class="tool-pill">Adobe Photoshop</span><span class="tool-pill">Adobe Premiere Pro</span><span class="tool-pill">Canva</span><span class="tool-pill">CapCut</span><span class="tool-pill">Descript</span><span class="tool-pill">Loom</span><span class="tool-pill">Adobe After Effects</span></div>
+        <div class="tool-list"><span class="tool-pill">Adobe Illustrator</span><span class="tool-pill">Adobe Photoshop</span><span class="tool-pill">Adobe Premiere Pro</span><span class="tool-pill">Canva</span><span class="tool-pill">CapCut</span><span class="tool-pill">Descript</span><span class="tool-pill">Adobe After Effects</span></div>
       </div>
       <div class="tool-group">
         <div class="tool-group-label">Web & publishing</div>
@@ -640,8 +612,6 @@ function toggleCard(btn) {
   const isOpen = detail.classList.contains('open');
   detail.classList.toggle('open');
   btn.classList.toggle('open');
-  btn.querySelector('span') && (btn.querySelector('span').textContent = isOpen ? 'read more' : 'read less');
-  // update text node directly
   const nodes = btn.childNodes;
   for (let n of nodes) {
     if (n.nodeType === 3 && n.textContent.trim()) {
