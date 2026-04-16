@@ -36,12 +36,19 @@ h1 { font-size: clamp(1.75rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; l
 .header-links a { font-size: 12px; color: var(--text-mid); text-decoration: none; font-weight: 500; transition: color 0.2s; }
 .header-links a:hover { color: var(--teal); }
 
+/* WICD BUTTON */
+.wicd-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 1.1rem; padding: 9px 18px; background: var(--teal-dim); border: 1px solid rgba(92,225,230,0.45); border-radius: var(--radius-pill); font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; color: var(--teal); letter-spacing: 0.02em; cursor: pointer; transition: background 0.2s, border-color 0.2s; opacity: 0; animation: fadeUp 0.5s ease forwards 0.35s; }
+.wicd-btn:hover { background: rgba(92,225,230,0.22); border-color: rgba(92,225,230,0.7); }
+
 /* TABS */
 .tabs { display: flex; border-bottom: 1px solid var(--rule); margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.5s ease forwards 0.5s; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .tabs::-webkit-scrollbar { display: none; }
 .tab-btn { padding: 1rem 1.25rem; font-size: 14px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-muted); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.2s; margin-bottom: -1px; font-family: 'Montserrat', sans-serif; white-space: nowrap; flex-shrink: 0; }
 .tab-btn:hover { color: var(--text); }
 .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
+.tab-btn.wicd-tab { color: var(--teal); opacity: 0.7; }
+.tab-btn.wicd-tab:hover { opacity: 1; }
+.tab-btn.wicd-tab.active { opacity: 1; border-bottom-color: var(--teal); }
 
 /* BURGER */
 .burger-menu { display: none; margin-bottom: 2rem; position: relative; }
@@ -90,7 +97,7 @@ h1 { font-size: clamp(1.75rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; l
 .card-outcome { margin-top: 1rem; padding: 0.75rem; background: var(--teal-dim); border-left: 2px solid var(--teal); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 12px; color: var(--text-mid); }
 .card-outcome strong { color: var(--teal); font-weight: 700; display: block; font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 4px; }
 
-/* TOOLS — card-style sections with teal accent */
+/* TOOLS */
 .tools-section { margin-top: 2rem; padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--rule); border-left: 3px solid var(--teal); border-radius: var(--radius); }
 .tools-section-first { margin-top: 0; }
 .tools-title { font-size: 11px; font-weight: 700; color: var(--teal); margin-bottom: 1.25rem; letter-spacing: 0.08em; text-transform: uppercase; }
@@ -99,7 +106,7 @@ h1 { font-size: clamp(1.75rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; l
 .tool-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.5rem; }
 .tool-pill { font-size: 12px; padding: 4px 12px; border-radius: var(--radius-pill); background: rgba(242,242,242,0.1); border: 1px solid rgba(242,242,242,0.25); color: var(--text); font-weight: 400; cursor: default; }
 
-/* ABOUT — teal accents throughout */
+/* ABOUT */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
 .about-block-title { font-size: 11px; font-weight: 700; color: var(--teal); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); letter-spacing: 0.08em; text-transform: uppercase; }
 .about-text { font-size: 13px; color: var(--text-mid); font-weight: 300; margin-bottom: 0.75rem; }
@@ -116,6 +123,34 @@ h1 { font-size: clamp(1.75rem, 6vw, 3rem); font-weight: 700; line-height: 1.1; l
 .skill-pill { font-size: 12px; padding: 4px 12px; border-radius: var(--radius-pill); background: rgba(242,242,242,0.1); border: 1px solid rgba(242,242,242,0.25); color: var(--text); font-weight: 400; cursor: default; }
 .a11y-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--radius); background: var(--teal-dim); border: 1px solid rgba(92,225,230,0.3); font-size: 13px; color: var(--text); font-weight: 500; margin-top: 1rem; line-height: 1.5; letter-spacing: -0.01em; }
 .a11y-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+
+/* WICD PANEL */
+.wicd-intro { padding: 2rem 0 0.5rem; }
+.wicd-eyebrow { font-size: 11px; font-weight: 700; color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.wicd-headline { font-size: clamp(1.25rem, 3.5vw, 1.9rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.2; color: var(--text); margin-bottom: 0.75rem; }
+.wicd-headline span { color: var(--teal); }
+.wicd-sub { font-size: 13px; color: var(--text-mid); font-weight: 300; max-width: 520px; line-height: 1.7; margin-bottom: 2.5rem; }
+.wicd-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; align-items: start; }
+.wicd-card { background: var(--bg-card); border: 1px solid var(--rule); border-radius: var(--radius); transition: border-color 0.2s, background 0.2s; cursor: pointer; }
+.wicd-card:hover { background: var(--bg-lift); border-color: rgba(242,242,242,0.22); }
+.wicd-card.open { border-color: rgba(92,225,230,0.35); background: var(--bg-lift); }
+.wicd-card.cta { border-color: rgba(92,225,230,0.3); background: var(--teal-dim); cursor: default; }
+.wicd-card.cta:hover { background: rgba(92,225,230,0.18); }
+.wc-head { padding: 1.1rem 1.25rem 0.9rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; }
+.wc-title-wrap { flex: 1; }
+.wc-if { font-size: 10px; font-weight: 700; color: var(--teal); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; opacity: 0.8; }
+.wc-title { font-size: 13px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; line-height: 1.4; }
+.wc-chevron { flex-shrink: 0; transition: transform 0.25s; color: var(--text-muted); margin-top: 3px; }
+.wicd-card.open .wc-chevron { transform: rotate(180deg); }
+.wc-body { display: none; padding: 0 1.25rem 1.1rem; border-top: 1px solid var(--rule-soft); }
+.wicd-card.open .wc-body { display: block; padding-top: 0.9rem; }
+.wc-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.wc-pill { font-size: 11px; padding: 4px 10px; border-radius: var(--radius-pill); background: rgba(92,225,230,0.1); border: 1px solid rgba(92,225,230,0.25); color: var(--text); font-weight: 500; line-height: 1.4; }
+.wc-pill.hi { background: rgba(92,225,230,0.2); border-color: rgba(92,225,230,0.5); color: var(--teal); }
+.cta-inner { padding: 1.25rem; text-align: center; text-decoration: none; display: block; }
+.cta-label { font-size: 10px; font-weight: 700; color: var(--teal); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 5px; opacity: 0.85; }
+.cta-title { font-size: 13px; font-weight: 700; color: var(--teal); letter-spacing: -0.02em; line-height: 1.4; margin-bottom: 7px; }
+.cta-addr { font-size: 11px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.01em; }
 
 /* FOOTER */
 footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; }
@@ -141,10 +176,14 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   .tools-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .track-label { display: none; }
   footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .wicd-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 400px) {
   .tools-grid { grid-template-columns: 1fr; }
   h1 { letter-spacing: -0.04em; }
+}
+@media (min-width: 641px) and (max-width: 860px) {
+  .wicd-grid { grid-template-columns: 1fr 1fr; }
 }
 
 /* MOBILE CAROUSEL */
@@ -179,6 +218,10 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <div>
         <h1>santina piazzese<br>spratte</h1>
         <p class="subtitle"><strong style="display:block; font-size:15px; color:var(--teal); font-weight:700; letter-spacing:-0.03em; margin-bottom:0.4rem;">Sr. UX Researcher · Behavioral Scientist & Strategic Communicator · MSc Social Influence, UvA</strong>6+ years translating human insight into research, narrative, and strategy across UX research and communications.</p>
+        <button class="wicd-btn" onclick="switchTabFromBtn('wicd')">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="flex-shrink:0;"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          ok but what can you actually do?
+        </button>
       </div>
     </div>
     <div class="header-links">
@@ -195,6 +238,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   <button class="tab-btn" onclick="switchTab('comms', this)">Strategic communications</button>
   <button class="tab-btn" onclick="switchTab('about', this)">About</button>
   <button class="tab-btn" onclick="switchTab('tools', this)">Tools</button>
+  <button class="tab-btn wicd-tab" id="wicd-tab-btn" onclick="switchTab('wicd', this)">What I can do →</button>
 </div>
 
 <div class="burger-menu" id="burgerMenu">
@@ -208,6 +252,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
     <button class="burger-item" onclick="burgerSwitch('comms', 'Strategic communications', this)">Strategic communications</button>
     <button class="burger-item" onclick="burgerSwitch('about', 'About', this)">About</button>
     <button class="burger-item" onclick="burgerSwitch('tools', 'Tools', this)">Tools</button>
+    <button class="burger-item" onclick="burgerSwitch('wicd', 'What I can do →', this)">What I can do →</button>
   </div>
 </div>
 
@@ -223,7 +268,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
     <div class="card">
       <img src="convey banner.png" alt="GoConvey" class="card-banner" onerror="this.style.display='none'">
       <div class="card-preview">
-        <div class="card-org">GoConvey · Communications Technology ·Employed researcher · split role · 2023–present</div>
+        <div class="card-org">GoConvey · Communications Technology · Employed researcher · split role · 2023–present</div>
         <div class="card-hook">Market research, persona strategy & conversational AI — experience strategy and C-suite collaboration for new product lines in U.S. utilities and citizen well-being markets.</div>
         <div class="tags"><span class="tag">Market research</span><span class="tag">Conversational AI</span><span class="tag">Crisis comms</span><span class="tag">Figma</span><span class="tag">Tone of voice</span></div>
         <button class="card-toggle" onclick="toggleCard(this)">
@@ -238,7 +283,6 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
         <div class="card-outcome"><strong>Outcome</strong>Persona and market research outputs directly informed product design and go-to-market strategy across multiple new product lines</div>
       </div>
     </div>
-    
 
     <div class="card">
       <img src="almaya banner.png" alt="Almaya Life" class="card-banner" onerror="this.style.display='none'">
@@ -278,7 +322,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       </div>
     </div>
 
-  <div class="card">
+    <div class="card">
       <img src="silencio banner.png" alt="Silencio" class="card-banner" onerror="this.style.display='none'">
       <div class="card-preview">
         <div class="card-org">Silencio · Sound Mapping App · 2024 Freelance</div>
@@ -292,12 +336,12 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <div class="card-detail">
         <div class="card-row"><span class="card-label">Role</span><span class="card-text">Strategic UX research consultant (freelance) — brought in to build the entire user understanding layer for a product mid-redesign, with no existing analytics or user knowledge</span></div>
         <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">A fast-growing app with 100k+ users was rebuilding their product through an external agency — essentially blind. No analytics infrastructure, no user research, no behavioral data. The redesign was already underway when I joined.</span></div>
-        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Mapped current and new app journeys across 4 core flows — translating user actions and key moments into digital behavior events (clicks, hovers, notifications, funnels). Defined the full Amplitude event taxonomy, enabling behavioral tracking for the first time. Conducted a heuristic, usability, and accessibility audit of the new app wireframes — delivered a report with actionable design recommendations including contrast failures and friction-heavy funnels. Led end-to-end qualitative research: recruited 15 existing users through their own channels, designed the screener and discussion guide, conducted interviews, synthesized findings into an insights report with prioritized recommendations.</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Mapped current and new app journeys across 4 core flows — translating user actions and key moments into digital behavior events. Defined the full Amplitude event taxonomy, enabling behavioral tracking for the first time. Conducted a heuristic, usability, and accessibility audit of the new app wireframes. Led end-to-end qualitative research: 15 users, screener, guide, interviews, prioritized recommendations report.</span></div>
         <div class="card-outcome"><strong>Outcome</strong>Delivered the entire user understanding layer from scratch — analytics infrastructure, behavioral event taxonomy, UX audit, and qualitative insight — grounding an active agency redesign in real user behavior for the first time</div>
       </div>
     </div>
 
-<div class="card">
+    <div class="card">
       <img src="ourritual banner.png" alt="OurRitual" class="card-banner" onerror="this.style.display='none'">
       <div class="card-preview">
         <div class="card-org">OurRitual · Mental Wellness B2C · Employed researcher · split role · 2023–2026</div>
@@ -315,7 +359,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
         <div class="card-outcome"><strong>Outcome</strong>Behavioral insights drove brand identity decisions, product development, and communication strategy simultaneously — research operating at a strategic level across the full business</div>
       </div>
     </div>
-    
+
   </div>
 </div>
 
@@ -361,7 +405,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <div class="card-detail">
         <div class="card-row"><span class="card-label">Role</span><span class="card-text">Communications lead & board member — volunteer leadership role, zero budget</span></div>
         <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Build a full external and internal communications strategy from scratch for a new AI ethics nonprofit — tone of voice, channel strategy, and public-facing content for non-specialist audiences, with no dedicated budget</span></div>
-        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Developed a 3-6-12-month organizational communications strategy covering tone of voice, channel priorities, and content pipeline. Led volunteers and assigned roles to carry out strategy across social media, website, newsletter and internal team comms channels. Created educational content on ethical AI for general audiences. Built a dual-scenario roadmap — zero budget and grant-funded — with KPIs at each phase. Strategy delivered 2026 — currently in implementation. Applied persuasion frameworks from MSc coursework to structure the channel strategy and behavior change goals</span></div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Developed a 3-6-12-month organizational communications strategy covering tone of voice, channel priorities, and content pipeline. Led volunteers and assigned roles to carry out strategy across social media, website, newsletter and internal team comms channels. Created educational content on ethical AI for general audiences. Built a dual-scenario roadmap — zero budget and grant-funded — with KPIs at each phase. Applied persuasion frameworks from MSc coursework to structure the channel strategy and behavior change goals</span></div>
         <div class="card-outcome"><strong>Outcome</strong>End-to-end communications framework delivered: brand voice, channel strategy, campaign-specific messaging, SEO plan, internal comms toolkit, and a phased roadmap with measurable KPIs across the 3-6-12 months mark</div>
       </div>
     </div>
@@ -370,7 +414,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <img src="sed banner.jpg" alt="SED Fund" class="card-banner" onerror="this.style.display='none'">
       <div class="card-preview">
         <div class="card-org">SED Fund · Philanthropy · The Hague · MSc internship · 2026</div>
-        <div class="card-hook"> Sole practitioner of Social listening & narrative strategy in sustainability — monitoring a fast-moving policy landscape and translating stakeholder intelligence into organizational communications.</div>
+        <div class="card-hook">Sole practitioner of Social listening & narrative strategy in sustainability — monitoring a fast-moving policy landscape and translating stakeholder intelligence into organizational communications.</div>
         <div class="tags"><span class="tag">Pulsar</span><span class="tag">Social listening</span><span class="tag">Media monitoring</span><span class="tag">Sustainability</span><span class="tag">Newsletter</span></div>
         <button class="card-toggle" onclick="toggleCard(this)">
           <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 7L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -418,8 +462,8 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <div class="card-detail">
         <div class="card-row"><span class="card-label">Role</span><span class="card-text">Independent writer — sole creator, editor, and growth strategist for a Substack publication at the intersection of behavioral science, psychology, and everyday life</span></div>
         <div class="card-row"><span class="card-label">Challenge</span><span class="card-text">Build a genuine readership from zero, without paid promotion, in a saturated content landscape — and do it while writing about complex psychological and behavioral concepts in a way that feels human rather than academic</span></div>
-        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Published essays applying behavioral science frameworks to relationships, identity, and human behavior — consistently finding the angle that makes research feel personal. Grew the publication organically to 2,600+ subscribers through quality and consistency alone. Individual pieces have reached 7,000+ engagements. Built and maintained presence across multiple platforms (Instagram, TikTok, Twitter/X) around the same themes, reaching 1,100+ followers on a niche UX/psychology account and 5,000+ on lifestyle content.</span></div>
-        <div class="card-outcome"><strong>Outcome</strong>A decade-long track record of building engaged audiences from zero across different niches and formats — without paid promotion, without institutional backing. Proof that the ability to translate complex ideas into content people actually want to read is not a soft skill, it's a craft.</div>
+        <div class="card-row"><span class="card-label">What I did</span><span class="card-text">Published essays applying behavioral science frameworks to relationships, identity, and human behavior. Grew the publication organically to 2,600+ subscribers. Individual pieces have reached 7,000+ engagements. Built presence across Instagram, TikTok, Twitter/X — 1,100+ followers on a niche UX/psychology account and 5,000+ on lifestyle content.</span></div>
+        <div class="card-outcome"><strong>Outcome</strong>A decade-long track record of building engaged audiences from zero across different niches and formats — without paid promotion, without institutional backing. Proof that translating complex ideas into content people actually want to read is a craft, not a soft skill.</div>
       </div>
     </div>
 
@@ -443,7 +487,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       </div>
       <p class="about-text">I'm a behavioral scientist and strategic communicator based in Amsterdam. My work sits at the intersection of understanding people and communicating in ways that actually reach them — whether that's a research study, a campaign strategy, or a piece of writing.</p>
       <p class="about-text">2nd MSc in Social Influence from the University of Amsterdam (2026), with a focus on persuasion, behavioral interventions, and evidence-based communication for change. Courses included: Fundamentals of Behavior Change (partly taught by IPSOS consultants), Advanced Social Influence, Emotional Influence and Applied Research Methods. My first masters was in cognitive psychology.</p>
-      <p class="about-text">I've spent six years doing experience and behavioral research across startups, scale-ups, and enterprise — and have been building toward strategic communications </p>
+      <p class="about-text">I've spent six years doing experience and behavioral research across startups, scale-ups, and enterprise — and have been building toward strategic communications.</p>
       <div class="a11y-badge">
         <span class="a11y-dot"></span>
         Open to roles in both comms and research, particularly where behavioral science and storytelling meet. Based in Amsterdam.
@@ -487,8 +531,8 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       <div class="about-block-title">Formal Education</div>
       <div class="credential-row"><div class="cred-title">MSc Psychology — Social Influence</div><div class="cred-sub">University of Amsterdam · 2025–2026 · Coursework in persuasion science, behavioral interventions for systemic change, community-level behavior change, and evidence-based campaign design. Thesis in social psychology of nonverbal communication and interpersonal influence.</div></div>
       <div class="credential-row"><div class="cred-title">Postgraduate MA — Cognitive Psychotherapy</div><div class="cred-sub">Universidad Nacional de Mar del Plata · 2023–2024</div></div>
-      <div class="credential-row"><div class="cred-title">BSc Psychology — Honors (Licenciatura)</div><div class="cred-sub">Universidad de Belgrano · 2018–2021 · Academic excellence & Rotary awards · Thesis in Scalability challenges of Mental Health apps </div></div>
-      <div class="credential-row"><div class="cred-title">Technical Diploma — Media Production (Cum Laude)</div><div class="cred-sub">ORT Argentina · 2013–2017 ·  Specialized training in written, audio, and visual content production — editing software, studio environments, sound, direction, and storyboarding.</div></div>
+      <div class="credential-row"><div class="cred-title">BSc Psychology — Honors (Licenciatura)</div><div class="cred-sub">Universidad de Belgrano · 2018–2021 · Academic excellence & Rotary awards · Thesis in Scalability challenges of Mental Health apps</div></div>
+      <div class="credential-row"><div class="cred-title">Technical Diploma — Media Production (Cum Laude)</div><div class="cred-sub">ORT Argentina · 2013–2017 · Specialized training in written, audio, and visual content production — editing software, studio environments, sound, direction, and storyboarding.</div></div>
     </div>
 
     <div>
@@ -514,7 +558,6 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
     <span class="track-title">Tools & platforms</span>
     <span class="track-rule"></span>
   </div>
-
   <div class="tools-section tools-section-first">
     <div class="tools-title">Research & UX</div>
     <div class="tools-grid">
@@ -536,7 +579,6 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
       </div>
     </div>
   </div>
-
   <div class="tools-section">
     <div class="tools-title">Communications & content</div>
     <div class="tools-grid">
@@ -564,6 +606,187 @@ footer { border-top: 1px solid var(--rule); padding-top: 2rem; display: flex; ju
   </div>
 </div>
 
+<!-- WICD PANEL -->
+<div class="panel" id="panel-wicd">
+  <div class="wicd-intro">
+    <div class="wicd-eyebrow">What I can do</div>
+    <h2 class="wicd-headline">Ok, impressive background —<br>but <span>what can she actually solve?</span></h2>
+    <p class="wicd-sub">Good question. Here's the honest answer. Each card below is a real problem I can walk into and own. Click the ones that sound like yours.</p>
+  </div>
+  <div class="wicd-grid">
+
+    <div class="wicd-card" onclick="toggleWicd(this)">
+      <div class="wc-head">
+        <div class="wc-title-wrap">
+          <div class="wc-if">If you need</div>
+          <div class="wc-title">To understand your users at a deeper level</div>
+        </div>
+        <svg class="wc-chevron" width="13" height="8" viewBox="0 0 13 8" fill="none"><path d="M1 1L6.5 7L12 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="wc-body">
+        <div class="wc-pills">
+          <span class="wc-pill">In-depth qualitative interviews</span>
+          <span class="wc-pill">Narrative & language analysis</span>
+          <span class="wc-pill hi">Behavioral personas</span>
+          <span class="wc-pill">Journey mapping</span>
+          <span class="wc-pill">Usability & accessibility audits</span>
+          <span class="wc-pill hi">The psychology underneath the behavior</span>
+          <span class="wc-pill">Identifying assumptions no one has named</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wicd-card" onclick="toggleWicd(this)">
+      <div class="wc-head">
+        <div class="wc-title-wrap">
+          <div class="wc-if">If you need</div>
+          <div class="wc-title">Research that changes decisions, not just informs them</div>
+        </div>
+        <svg class="wc-chevron" width="13" height="8" viewBox="0 0 13 8" fill="none"><path d="M1 1L6.5 7L12 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="wc-body">
+        <div class="wc-pills">
+          <span class="wc-pill hi">Strategic "so what" framing</span>
+          <span class="wc-pill">C-suite research presentations</span>
+          <span class="wc-pill">Mixed-methods synthesis</span>
+          <span class="wc-pill">Research roadmaps</span>
+          <span class="wc-pill hi">Connecting insight to product direction</span>
+          <span class="wc-pill">Making findings impossible to ignore</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wicd-card" onclick="toggleWicd(this)">
+      <div class="wc-head">
+        <div class="wc-title-wrap">
+          <div class="wc-if">If you need</div>
+          <div class="wc-title">Behavioral science applied to real problems</div>
+        </div>
+        <svg class="wc-chevron" width="13" height="8" viewBox="0 0 13 8" fill="none"><path d="M1 1L6.5 7L12 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="wc-body">
+        <div class="wc-pills">
+          <span class="wc-pill hi">Behavioral economics frameworks</span>
+          <span class="wc-pill">Cognitive bias identification</span>
+          <span class="wc-pill">Social influence & persuasion</span>
+          <span class="wc-pill hi">Intervention design</span>
+          <span class="wc-pill">Motivation & self-efficacy theory</span>
+          <span class="wc-pill">Academic research → practical recs</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wicd-card" onclick="toggleWicd(this)">
+      <div class="wc-head">
+        <div class="wc-title-wrap">
+          <div class="wc-if">If you need</div>
+          <div class="wc-title">To understand your market and sharpen your positioning</div>
+        </div>
+        <svg class="wc-chevron" width="13" height="8" viewBox="0 0 13 8" fill="none"><path d="M1 1L6.5 7L12 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="wc-body">
+        <div class="wc-pills">
+          <span class="wc-pill">Consumer & market research</span>
+          <span class="wc-pill hi">Audience segmentation</span>
+          <span class="wc-pill">Competitive landscape analysis</span>
+          <span class="wc-pill">Social listening (Pulsar)</span>
+          <span class="wc-pill hi">GTM strategy support</span>
+          <span class="wc-pill">Positioning from behavioral insight</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wicd-card" onclick="toggleWicd(this)">
+      <div class="wc-head">
+        <div class="wc-title-wrap">
+          <div class="wc-if">If you need</div>
+          <div class="wc-title">Communications strategy that actually changes behavior</div>
+        </div>
+        <svg class="wc-chevron" width="13" height="8" viewBox="0 0 13 8" fill="none"><path d="M1 1L6.5 7L12 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="wc-body">
+        <div class="wc-pills">
+          <span class="wc-pill hi">Tone of voice & channel strategy</span>
+          <span class="wc-pill">Narrative strategy</span>
+          <span class="wc-pill">Campaign design</span>
+          <span class="wc-pill hi">Persuasion-informed messaging</span>
+          <span class="wc-pill">Social listening & media monitoring</span>
+          <span class="wc-pill">Content for non-specialist audiences</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wicd-card" onclick="toggleWicd(this)">
+      <div class="wc-head">
+        <div class="wc-title-wrap">
+          <div class="wc-if">If you need</div>
+          <div class="wc-title">Service design & innovation thinking</div>
+        </div>
+        <svg class="wc-chevron" width="13" height="8" viewBox="0 0 13 8" fill="none"><path d="M1 1L6.5 7L12 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="wc-body">
+        <div class="wc-pills">
+          <span class="wc-pill hi">Service blueprints</span>
+          <span class="wc-pill">End-to-end journey mapping</span>
+          <span class="wc-pill">Dual-audience research</span>
+          <span class="wc-pill">MVP testing & validation</span>
+          <span class="wc-pill hi">Behavioral product innovation</span>
+          <span class="wc-pill">Identifying adoption barriers</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wicd-card" onclick="toggleWicd(this)">
+      <div class="wc-head">
+        <div class="wc-title-wrap">
+          <div class="wc-if">If you need</div>
+          <div class="wc-title">To build a research practice from zero</div>
+        </div>
+        <svg class="wc-chevron" width="13" height="8" viewBox="0 0 13 8" fill="none"><path d="M1 1L6.5 7L12 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="wc-body">
+        <div class="wc-pills">
+          <span class="wc-pill hi">ResearchOps from scratch</span>
+          <span class="wc-pill">Methodology & tooling setup</span>
+          <span class="wc-pill">Analytics infrastructure (Amplitude)</span>
+          <span class="wc-pill hi">First researcher experience × 3</span>
+          <span class="wc-pill">Building research credibility internally</span>
+          <span class="wc-pill">Processes before anyone asked</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wicd-card" onclick="toggleWicd(this)">
+      <div class="wc-head">
+        <div class="wc-title-wrap">
+          <div class="wc-if">If you need</div>
+          <div class="wc-title">Seniority, ownership, and real delivery</div>
+        </div>
+        <svg class="wc-chevron" width="13" height="8" viewBox="0 0 13 8" fill="none"><path d="M1 1L6.5 7L12 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="wc-body">
+        <div class="wc-pills">
+          <span class="wc-pill hi">End-to-end project ownership</span>
+          <span class="wc-pill">Client-facing delivery</span>
+          <span class="wc-pill">Stakeholder management</span>
+          <span class="wc-pill">Junior team mentoring</span>
+          <span class="wc-pill hi">No handholding needed</span>
+          <span class="wc-pill">Managing external freelancers</span>
+        </div>
+      </div>
+    </div>
+
+    <a class="wicd-card cta" href="mailto:psi.santina@gmail.com" style="text-decoration:none; display:block;">
+      <div class="cta-inner">
+        <div class="cta-label">Not sure yet?</div>
+        <div class="cta-title">This sounds interesting<br>but I'm not quite sure</div>
+        <div class="cta-addr">psi.santina@gmail.com →</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
 <footer>
   <span class="footer-name">Santina Piazzese Spratte</span>
   <div class="footer-links">
@@ -583,6 +806,20 @@ function switchTab(tab, btn) {
   setTimeout(initCarousels, 50);
 }
 
+function switchTabFromBtn(tab) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.burger-item').forEach(i => i.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  const tabBtn = document.getElementById('wicd-tab-btn');
+  if (tabBtn) tabBtn.classList.add('active');
+  const burgerLabel = document.getElementById('burgerLabel');
+  if (burgerLabel) burgerLabel.textContent = 'What I can do →';
+  const wicdBurgerItem = document.querySelector('.burger-item:last-child');
+  if (wicdBurgerItem) wicdBurgerItem.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+  
 function toggleBurger() {
   document.getElementById('burgerBtn').classList.toggle('open');
   document.getElementById('burgerDropdown').classList.toggle('open');
@@ -619,6 +856,11 @@ function toggleCard(btn) {
       n.textContent = isOpen ? ' read more' : ' read less';
     }
   }
+}
+
+function toggleWicd(card) {
+  if (card.classList.contains('cta')) return;
+  card.classList.toggle('open');
 }
 
 function initCarousels() {
